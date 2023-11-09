@@ -1,0 +1,146 @@
+
+.Left-side-transaction{
+    background-color: #141317;
+    border: 1px solid #141317;
+    width: 57rem;
+    height: 46rem;
+    border-radius: 20px;
+    position: relative;
+    left: 2rem;
+    top: 0.3rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+ 
+    scrollbar-color: #5d982e white;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+}
+
+.Left-side-transaction.day-mode {
+    background-color: #fff;
+    color: #000; /* Text color */
+    border: 3px solid #3A57E8;
+
+    background-color: #F2F2F2;
+   
+  }
+
+
+  .side_navbar-transaction {
+    background-color: #09070e;
+    border-radius: 20px;
+    border: 1px solid #09070e;
+    width: 7.5rem;
+    height: 54rem;
+    box-shadow: 2px 0px 4px 0px #3a57e840;
+    z-index: 1;
+  }
+
+  .side_navbar-transaction.day-mode {
+    background-color: #fff;
+    color: #000; 
+    border: 3px solid  #3A57E8;
+
+    border-top: 0px solid #3A57E8  ;
+  
+    /* Text color */
+    /* ... other styles for side_navbar in day mode ... */
+  }
+
+  .Title-button-wrap{
+    display: flex;
+    gap: 6rem;
+    align-items: baseline;
+    margin-top: 2rem;
+    margin-left: 2rem;
+
+  }
+
+
+  .Transaction-text{
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    -webkit-text-decoration: underline #3F56B2;
+    text-decoration: underline #3F56B2;
+    width: 14rem;
+  }
+
+
+  .View-btn-tablelist{
+    width: 3rem;
+    height: 2rem;
+cursor: pointer;
+background-color: #333378;
+color: white;
+border: 1px solid  #333378;
+border-radius: 5px;
+}
+
+.Table-heading{
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 36px;
+    letter-spacing: 0em;
+    display: flex;
+    gap: 6.7rem;
+    margin-left: 2rem;
+    border-bottom: 1px solid #3F56B2;
+    width: 52rem;
+
+}
+
+.Table-heading-2{
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 36px;
+    letter-spacing: 0em;
+    display: flex;
+    gap: 3.96rem;
+    margin-left: 2.3rem;
+    border-bottom: 1px solid white;
+    width: 52rem;
+}
+
+
+.Table-heading-2.day-mode {
+    background-color: #fff;
+    color: #000; /* Text color */
+    border-bottom: 1px solid black;
+
+    background-color: #F2F2F2;
+   
+  }
+.table-list-sub-container{
+    border: 1px solid #e2e2e4;
+    position: relative;
+
+    width: 64.2rem;
+    height: 45.6rem;
+    border-radius: 13px;
+    top: 119px;
+    background-color: #fcfcff;
+
+    right: 5rem;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: auto;
+ 
+    scrollbar-color: #5d982e white;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+}
+
+
+.whole-tb{
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+ 
+}

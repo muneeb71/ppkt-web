@@ -1,0 +1,135 @@
+.invoive-container{
+    width: 40rem;
+    height: 53rem;
+    border: 2px solid black;
+
+}
+
+
+
+.back-white{
+    width: 45rem;
+    height: 57rem;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Conatiner-invoice{
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    background-color: #1D1D1D; 
+}
+
+.main-wrap-invoice{
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    z-index: 1;
+    color: black;
+}
+
+.wrap-1-invoice{
+    display: flex;
+    gap: 3rem;
+}
+
+
+.wrap-2-invoice{
+    display: flex;
+    gap: 3rem;
+}
+
+.content-invoice{
+    font-weight: 600;
+    font-size: 13px;
+
+}
+
+.content-invoice-2{
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.invoice-heading{
+    color: rgb(42, 42, 42);
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    position: relative;
+    top: 8px;
+ 
+}
+
+.invoice-logo{
+    height: 11rem;
+}
+
+.fianl-invoice{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+
+
+}
+
+.ist-one{
+    display: flex;
+    gap: 2rem;
+    width: 497px;
+    height: 40px;
+    background: rgb(226, 226, 228);
+    font-size: 13px;
+    font-weight: 600;
+    color: black;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.second-one{
+    display: flex;
+    gap: 4rem;
+   font-size: 13px;
+   font-weight: 400;
+    width: 497px;
+    height: 40px;
+    flex-shrink: 0;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(226, 226, 228);
+    border-image: initial;
+    color: black;
+    align-items: center;
+    justify-content: center;
+}
+
+.print-button{
+    width: 182px;
+    height: 48px;
+    flex-shrink: 0;
+    margin-top: 84px;
+    cursor: pointer;
+
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    border-radius: 10px;
+    background: rgb(251, 251, 251);
+}

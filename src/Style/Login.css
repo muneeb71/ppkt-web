@@ -1,0 +1,296 @@
+.Left-side-login{
+    background-color: #141317;
+    border: 1px solid #141317;
+    width: 29.75rem;
+    height: 54rem;
+    border-radius: 20px;
+    box-shadow: 2px 0px 4px 0px #3a57e840;
+    display: flex;
+    align-items: center;
+    /* flex-direction: unset; */
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.login-img-right{
+    position: absolute;
+    right: -40rem;
+}
+
+
+.right-side-login {
+    display: flex;
+    
+    height: 54rem;
+
+    position: relative;
+}
+
+
+.Login-text{
+    font-family: Montserrat;
+font-size: 32px;
+font-weight: 400;
+line-height: 39px;
+letter-spacing: 0em;
+text-align: center;
+
+}
+
+
+.agreeing-text{
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+    width: 21rem;
+
+
+}
+
+.Left-inside{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    left: 2.4rem;
+    background-color: #13171C;
+    border: #13171C 1px solid;
+    border-radius: 5px;
+    width:26.125rem ;
+    height: 45.375rem;
+}
+
+.Login-register{
+    display: flex;
+    gap: 2rem;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    
+}
+
+
+.email-inputs-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    /* margin-left: -3rem; */
+    margin-top: 4rem;
+    margin-right: 11.5rem;
+}
+
+
+.information-2{
+    height: 2.4rem;
+    width: 18rem;
+    color: white;
+    background-color: #141317;
+    border: #141317 1px solid;
+    position: relative;
+    bottom: 3rem;
+    outline: none;
+    border-radius: 5px;
+    padding-left: 15px;
+}
+
+.First-name-2{
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    position: relative;
+    bottom: 4.3rem;
+    z-index: 1;
+    left: 12.9rem;
+    width: 12.5rem;
+}
+
+.rember-forget{
+    display: flex;
+    align-items: center;
+    gap: 5.7rem;
+    position: relative;
+    bottom: 2rem;
+    left: 0.5rem;
+}
+
+.Rmber-check{
+    display: flex;
+    gap: 0.2rem;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    align-items: center;
+}
+
+.forget-passowrd-text{
+    font-family: Montserrat;
+font-size: 12px;
+font-weight: 400;
+line-height: 15px;
+letter-spacing: 0em;
+text-align: left;
+color: #333378;
+}
+
+.Robot{
+width: 11rem;
+height: 2.5rem;
+background-color: #FCFCFC;
+border: 1px solid #E2E2E4;
+border-radius: 5px;
+display: flex;
+gap: 1rem;
+align-items: center;
+justify-content: center;
+margin-right: 9rem;
+}
+
+.i-not-robot-text{
+    font-family: Montserrat;
+font-size: 12px;
+font-weight: 500;
+line-height: 15px;
+letter-spacing: 0em;
+text-align: left;
+color: black;
+
+}
+
+.login-btn{
+    width: 19.813rem;
+    height: 2.813rem;
+    color: white;
+    background-color: #333378;
+    border-radius: 5px;
+    border: #333378 1px solid;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+/* Define styles for active link */
+.link-active {
+    border-bottom: 2px solid #FFFFFF;
+    color: #333378;
+    text-decoration: none;
+  }
+  
+  /* Define styles for inactive links */
+  .link-inactive {
+    border-bottom: none; /* No border for inactive links */
+    color: white; /* White text color for inactive links */
+    text-decoration: none;
+  }
+  
+
+  .Register-btn{
+    width: 21.5rem;
+    height: 2.813rem;
+    color: white;
+    background-color: #333378;
+    border-radius: 5px;
+    border: #333378 1px solid;
+    /* margin-top: 2rem; */
+    cursor: pointer;
+    margin-left: 1rem;
+  }
+
+  .privacy-text{
+    color: #333378;
+
+    font-family: Montserrat;
+font-size: 20px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0em;
+text-align: center;
+
+
+
+  }
+
+
+  .to-verfication-text{
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-left: 6px;
+  }
+
+  .forget-text{
+    font-family: Montserrat;
+font-size: 16px;
+font-weight: 500;
+line-height: 20px;
+letter-spacing: 0em;
+text-align: left;
+
+  }
+
+  .Cancel-send-wrap{
+    display: flex;
+    gap: 0.4rem;
+
+  }
+
+  .cancel-btn{
+    width: 10.063rem;
+    height: 2.813rem;
+    color: white;
+    background-color: #333378;
+    border-radius: 5px;
+    border: #333378 1px solid;
+    margin-top: 0.4rem;
+    cursor: pointer;
+    margin-left: 1rem;
+  }
+
+  .send-btn{
+    width: 10.063rem;
+    height: 2.813rem;
+    color: white;
+    background-color: #333378;
+    border-radius: 5px;
+    border: #333378 1px solid;
+    /* margin-top: 2rem; */
+    cursor: pointer;
+    margin-left: 1rem;
+  }
+
+  .otp-not{
+    font-family: Montserrat;
+font-size: 12px;
+font-weight: 500;
+line-height: 15px;
+letter-spacing: 0em;
+text-align: left;
+
+  }
+
+  .resend{
+    color: #333378;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
