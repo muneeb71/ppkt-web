@@ -3,7 +3,7 @@ import i18n from "i18next";
 import Switch from "react-switch";
 import "./i18n";
 import React, { useEffect, useState, useRef } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import loginimg from "../Assests/Login-img.svg";
 import "../Style/Login.css";
 import conatacticon from "../Assests/conatact-icon.svg";
@@ -13,11 +13,23 @@ import mail from "../Assests/Mail-icon.svg";
 import lock from "../Assests/Lock-icon.svg";
 import roboticon from "../Assests/captcha-icon.svg";
 import classnames from "classnames";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const Register = () => {
+  const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
   const [isNightMode, setIsNightMode] = useState(true);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [inProcess, setInProcess] = useState(false);
 
   const toggleLanguage = () => {
     const newLanguage = currentLanguage === "en" ? "de" : "en";
@@ -51,6 +63,44 @@ const Register = () => {
 
   const handleLinkClick = (linkName) => {
     setActiveLink(linkName);
+  };
+
+  const onRegister = async () => {
+    try {
+      setInProcess(true);
+      if (password.length < 8) {
+        toast.error("Password must be at least 8 characters");
+        return;
+      }
+      if (password != confirmPassword) {
+        toast.error("Password Does Not Match!");
+        return;
+      }
+      if (!firstName || !lastName || !email) {
+        toast.error("Invalid Details!");
+        return;
+      }
+      const response = await axios.post(
+        process.env.REACT_APP_API_URL + "register",
+        {
+          first_name: firstName,
+          last_name: lastName,
+          password: password,
+          email: email,
+          phone_no: mobile,
+          web_register: 1,
+        }
+      );
+      console.log(response);
+      if (response.status == 200) {
+        toast.success("Registration Successfull!");
+        navigate("/");
+      }
+    } catch (err) {
+      toast.error("Invalid Email or Password!");
+    } finally {
+      setInProcess(false);
+    }
   };
 
   return (
@@ -95,6 +145,8 @@ const Register = () => {
                   className={`information-2 ${
                     isNightMode ? "night-mode" : "day-mode"
                   }`}
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
                 <div
                   className={`Copy-address ${
@@ -112,6 +164,27 @@ const Register = () => {
                   className={`information-2 ${
                     isNightMode ? "night-mode" : "day-mode"
                   }`}
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+                <div
+                  className={`Copy-address ${
+                    isNightMode ? "night-mode" : "day-mode"
+                  }`}
+                >
+                  <img src={personicon} alt="" />
+                </div>
+              </div>
+              <div className="email-wrap">
+                <p className="First-name-2"> {t("Email")}</p>
+                <input
+                  type="text"
+                  placeholder="Enter Email"
+                  className={`information-2 ${
+                    isNightMode ? "night-mode" : "day-mode"
+                  }`}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <div
                   className={`Copy-address ${
@@ -130,6 +203,8 @@ const Register = () => {
                   className={`information-2 ${
                     isNightMode ? "night-mode" : "day-mode"
                   }`}
+                  value={mobile}
+                  onChange={(e) => setMobile(e.target.value)}
                 />
                 <div
                   className={`Copy-address ${
@@ -143,11 +218,13 @@ const Register = () => {
               <div className="email-wrap">
                 <p className="First-name-2"> {t("Enter_password")}</p>
                 <input
-                  type="text"
+                  type="password"
                   placeholder="**************"
                   className={`information-2 ${
                     isNightMode ? "night-mode" : "day-mode"
                   }`}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <div
                   className={`Copy-address ${
@@ -161,11 +238,13 @@ const Register = () => {
               <div className="email-wrap">
                 <p className="First-name-2"> {t("Confirm_Password")}</p>
                 <input
-                  type="text"
+                  type="password"
                   placeholder="**************"
                   className={`information-2 ${
                     isNightMode ? "night-mode" : "day-mode"
                   }`}
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                 />
                 <div
                   className={`Copy-address ${
@@ -177,8 +256,12 @@ const Register = () => {
               </div>
             </div>
 
-            <button type="button" className="Register-btn">
-              {t("Register")}
+            <button type="button" className="Register-btn" onClick={onRegister}>
+              {inProcess ? (
+                <FontAwesomeIcon icon={faCircleNotch} spin />
+              ) : (
+                t("Register")
+              )}
             </button>
           </div>
 
