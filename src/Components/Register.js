@@ -31,7 +31,7 @@ const Register = () => {
   };
 
   const links = [
-    { to: "/login", label: "Login" },
+    { to: "/", label: "Login" },
     { to: "/register", label: "Register" },
   ];
 

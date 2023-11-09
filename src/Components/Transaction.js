@@ -58,7 +58,7 @@ const Transaction = () => {
   const [isNightMode, setIsNightMode] = useState(true);
   const [transactions, setTransactions] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
-  const token = localStorage.getItem("token")
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   const toggleLanguage = () => {
@@ -90,221 +90,209 @@ const Transaction = () => {
   };
   return (
     <>
-      {transactions && (
-        <>
-          {isFetching ? (
-            <Loader />
-          ) : (
-            <div
-              className={`Conatiner ${isNightMode ? "night-mode" : "day-mode"}`}
-            >
-              <div
-                className={`Main-container ${
-                  isNightMode ? "night-mode" : "day-mode"
-                }`}
+      {isFetching ? <Loader /> : ""}
+      <div className={`Conatiner ${isNightMode ? "night-mode" : "day-mode"}`}>
+        <div
+          className={`Main-container ${
+            isNightMode ? "night-mode" : "day-mode"
+          }`}
+        >
+          <div
+            className={`side_navbar-transaction ${
+              isNightMode ? "night-mode" : "day-mode"
+            }`}
+          >
+            <p>
+              <img src={Logo} alt="" className="Logo-pkrt" />
+            </p>
+
+            <div className="Navbar-menu">
+              <NavLink to="/dashboard">
+                <p className="Navbar-icon-text">
+                  <img
+                    src={isNightMode ? homewhite : home}
+                    alt=""
+                    className="Home-pkrt"
+                  />{" "}
+                  {t("Home")}
+                </p>
+              </NavLink>
+              <NavLink to="/wallet">
+                <p className="Navbar-icon-text">
+                  <img
+                    src={isNightMode ? walletwhite : wallet}
+                    alt=""
+                    className="Wallet-pkrt"
+                  />{" "}
+                  {t("Wallet")}
+                </p>
+              </NavLink>
+
+              <NavLink to="/pay">
+                <p className="Navbar-icon-text">
+                  <img
+                    src={isNightMode ? Paywhite : pay}
+                    alt=""
+                    className="pay-pkrt"
+                  />{" "}
+                  {t("Pay")}
+                </p>
+              </NavLink>
+              <p className="Navbar-icon-text">
+                <img
+                  src={isNightMode ? transcationwhite : transaction}
+                  alt=""
+                  className="Transaction-pkrt"
+                />{" "}
+                {t("Transaction_History")}
+              </p>
+              <NavLink to="/setting">
+                <p className="Navbar-icon-text">
+                  <img
+                    src={isNightMode ? Settingwhite : setting}
+                    alt=""
+                    className="setting-pkrt"
+                  />
+                  {t("Setting")}
+                </p>
+              </NavLink>
+              <p
+                className="Navbar-icon-text-2"
+                onClick={() => {
+                  handleLogout();
+                  navigate("/");
+                }}
               >
-                <div
-                  className={`side_navbar-transaction ${
+                <img
+                  src={isNightMode ? Logoutwhite : logout}
+                  alt=""
+                  className="Logout-pkrt"
+                />
+                {t("logout")}
+              </p>
+            </div>
+          </div>
+
+          <div className="Right-side">
+            <div className="Title-button-wrap">
+              <p className="Transaction-text">{t("Transaction_History")}</p>
+
+              <div className="Changes-button">
+                <button
+                  className={`Language-change-btn ${
                     isNightMode ? "night-mode" : "day-mode"
                   }`}
+                  onClick={toggleLanguage}
                 >
-                  <p>
-                    <img src={Logo} alt="" className="Logo-pkrt" />
-                  </p>
-
-                  <div className="Navbar-menu">
-                    <NavLink to="/dashboard">
-                      <p className="Navbar-icon-text">
-                        <img
-                          src={isNightMode ? homewhite : home}
-                          alt=""
-                          className="Home-pkrt"
-                        />{" "}
-                        {t("Home")}
-                      </p>
-                    </NavLink>
-                    <NavLink to="/wallet">
-                      <p className="Navbar-icon-text">
-                        <img
-                          src={isNightMode ? walletwhite : wallet}
-                          alt=""
-                          className="Wallet-pkrt"
-                        />{" "}
-                        {t("Wallet")}
-                      </p>
-                    </NavLink>
-
-                    <NavLink to="/pay">
-                      <p className="Navbar-icon-text">
-                        <img
-                          src={isNightMode ? Paywhite : pay}
-                          alt=""
-                          className="pay-pkrt"
-                        />{" "}
-                        {t("Pay")}
-                      </p>
-                    </NavLink>
-                    <p className="Navbar-icon-text">
-                      <img
-                        src={isNightMode ? transcationwhite : transaction}
-                        alt=""
-                        className="Transaction-pkrt"
-                      />{" "}
-                      {t("Transaction_History")}
-                    </p>
-                    <NavLink to="/setting">
-                      <p className="Navbar-icon-text">
-                        <img
-                          src={isNightMode ? Settingwhite : setting}
-                          alt=""
-                          className="setting-pkrt"
-                        />
-                        {t("Setting")}
-                      </p>
-                    </NavLink>
-                    <p
-                      className="Navbar-icon-text-2"
-                      onClick={() => {
-                        handleLogout();
-                        navigate("/");
-                      }}
-                    >
-                      <img
-                        src={isNightMode ? Logoutwhite : logout}
-                        alt=""
-                        className="Logout-pkrt"
-                      />
-                      {t("logout")}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="Right-side">
-                  <div className="Title-button-wrap">
-                    <p className="Transaction-text">
-                      {t("Transaction_History")}
-                    </p>
-
-                    <div className="Changes-button">
-                      <button
-                        className={`Language-change-btn ${
-                          isNightMode ? "night-mode" : "day-mode"
-                        }`}
-                        onClick={toggleLanguage}
-                      >
-                        <img
-                          src={currentLanguage === "en" ? germanyFlag : usFlag}
-                          alt=""
-                        />
-                      </button>
-                      <button
-                        className={`day-night-mode-change-btn ${
-                          isNightMode ? "night-mode" : "day-mode"
-                        }`}
-                        onClick={toggleDayNightMode}
-                      >
-                        <img src={isNightMode ? Daynight : Nightday} alt="" />
-                      </button>
-                    </div>
-                  </div>
-
-                  <div
-                    className={`Left-side-transaction ${
-                      isNightMode ? "night-mode" : "day-mode"
-                    }`}
-                  >
-                    <table className="whole-tb">
-                      <thead>
-                        <tr className="Table-heading">
-                          <td>{t("transaction_hash")}</td>
-                          <td>{t("amount")}</td>
-                          <td>{t("to")}</td>
-                          <td>{t("from")}</td>
-                          <td>{t("date")}</td>
-                          <td>{t("trx_url")}</td>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {transactions.map((transaction) => (
-                          <tr
-                            key={transaction.timeStamp}
-                            className={`Table-heading-2 ${
-                              isNightMode ? "night-mode" : "day-mode"
-                            }`}
-                          >
-                            <td>
-                              {transaction.hash.slice(0, 8) +
-                                "..." +
-                                transaction.hash.slice(-8)}
-                            </td>
-                            <td
-                              style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                width: "10%",
-                              }}
-                            >
-                              {transaction.value.toLocaleString()}{" "}
-                              {transaction.currency
-                                ? transaction.currency
-                                : "PPKT"}
-                            </td>
-                            <td
-                              style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                width: "10%",
-                              }}
-                            >
-                              {transaction.to.slice(0, 7) +
-                                "..." +
-                                transaction.to.slice(-7)}
-                            </td>
-                            <td
-                              style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                width: "10%",
-                              }}
-                            >
-                              {transaction.from.slice(0, 7) +
-                                "..." +
-                                transaction.from.slice(-7)}
-                            </td>
-                            <td
-                              style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                width: "10%",
-                              }}
-                            >
-                              {timestampToDateTime(transaction.timeStamp)}
-                            </td>
-
-                            <td>
-                              <button
-                                className="View-btn-tablelist"
-                                onClick={() =>
-                                  window.open(
-                                    `https://polygonscan.com/tx/${transaction.hash}`,
-                                    "_blank"
-                                  )
-                                }
-                              >
-                                {t("view ")}
-                              </button>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+                  <img
+                    src={currentLanguage === "en" ? germanyFlag : usFlag}
+                    alt=""
+                  />
+                </button>
+                <button
+                  className={`day-night-mode-change-btn ${
+                    isNightMode ? "night-mode" : "day-mode"
+                  }`}
+                  onClick={toggleDayNightMode}
+                >
+                  <img src={isNightMode ? Daynight : Nightday} alt="" />
+                </button>
               </div>
             </div>
-          )}
-        </>
-      )}
+
+            <div
+              className={`Left-side-transaction ${
+                isNightMode ? "night-mode" : "day-mode"
+              }`}
+            >
+              <table className="whole-tb">
+                <thead>
+                  <tr className="Table-heading">
+                    <td>{t("transaction_hash")}</td>
+                    <td>{t("amount")}</td>
+                    <td>{t("to")}</td>
+                    <td>{t("from")}</td>
+                    <td>{t("date")}</td>
+                    <td>{t("trx_url")}</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  {transactions &&
+                    transactions.map((transaction) => (
+                      <tr
+                        key={transaction.timeStamp}
+                        className={`Table-heading-2 ${
+                          isNightMode ? "night-mode" : "day-mode"
+                        }`}
+                      >
+                        <td>
+                          {transaction.hash.slice(0, 8) +
+                            "..." +
+                            transaction.hash.slice(-8)}
+                        </td>
+                        <td
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            width: "10%",
+                          }}
+                        >
+                          {transaction.value.toLocaleString()}{" "}
+                          {transaction.currency ? transaction.currency : "PPKT"}
+                        </td>
+                        <td
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            width: "10%",
+                          }}
+                        >
+                          {transaction.to.slice(0, 7) +
+                            "..." +
+                            transaction.to.slice(-7)}
+                        </td>
+                        <td
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            width: "10%",
+                          }}
+                        >
+                          {transaction.from.slice(0, 7) +
+                            "..." +
+                            transaction.from.slice(-7)}
+                        </td>
+                        <td
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            width: "10%",
+                          }}
+                        >
+                          {timestampToDateTime(transaction.timeStamp)}
+                        </td>
+
+                        <td>
+                          <button
+                            className="View-btn-tablelist"
+                            onClick={() =>
+                              window.open(
+                                `https://polygonscan.com/tx/${transaction.hash}`,
+                                "_blank"
+                              )
+                            }
+                          >
+                            {t("view ")}
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

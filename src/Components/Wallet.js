@@ -150,11 +150,8 @@ const Wallet = () => {
 
   return (
     <>
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          {wallet && (
+     {loading ? <Loader /> : ""}
+       {wallet && (
             <div
               className={`Conatiner ${isNightMode ? "night-mode" : "day-mode"}`}
             >
@@ -274,7 +271,9 @@ const Wallet = () => {
                             {t("Wallet_Address")}
                           </p>
                           <p className="address-code">
-                            {wallet.slice(0, 12) + "...." + wallet.slice(-12)}
+                            {wallet
+                              ? wallet.slice(0, 12) + "...." + wallet.slice(-12)
+                              : ""}
                           </p>
                         </div>
                         <div
@@ -398,7 +397,7 @@ const Wallet = () => {
                         <div className="Card-wrap">
                           <img src={pkrttoken} alt="" className="Card-pic" />
                           <p className="card-balnce">
-                            {balance.token_balance} PPKT
+                            {balance ? balance.token_balance : ""} PPKT
                           </p>
                           <p className="Total-assets-text">
                             {t("Total_Assets")}
@@ -422,7 +421,7 @@ const Wallet = () => {
                         <div className="Card-wrap">
                           <img src={dollarsign} alt="" className="Card-pic" />
                           <p className="card-balnce">
-                            {balance.usdt_balance} USDT
+                            {balance ? balance.usdt_balance : ""} USDT
                           </p>
                           <p className="Total-assets-text">
                             {t("Total_Assets")}
@@ -600,8 +599,6 @@ const Wallet = () => {
               </div>
             </div>
           )}
-        </>
-      )}
     </>
   );
 };

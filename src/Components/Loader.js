@@ -5,18 +5,13 @@ import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
 const Loader = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        height: "100vh",
-      }}
-    >
-      <FontAwesomeIcon icon={faCircleNotch} spin />
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <div className="loader-container">
+          <FontAwesomeIcon icon={faCircleNotch} spin />
+        </div>
+      </div>
     </div>
   );
 };
-
 export default Loader;
