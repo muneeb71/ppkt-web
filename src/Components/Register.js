@@ -93,7 +93,7 @@ const Register = () => {
       );
       console.log(response);
       if (response.status == 200) {
-        toast.success("Registration Successfull!");
+        toast.success("Registration Successfull! Please Check Mail");
         navigate("/");
       }
     } catch (err) {

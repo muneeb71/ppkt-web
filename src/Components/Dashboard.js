@@ -196,7 +196,7 @@ const Dashboard = () => {
                   }`}
                 >
                   <div className="profile-img">
-                    <img src={profileimg} alt="" className="profile-img-icon" />
+                    <img src={user && user.image ? user.image : profileimg} height={30} width={80} alt="" className="profile-img-icon" />
                   </div>
 
                   <div className="Profile-detail">

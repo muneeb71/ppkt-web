@@ -170,8 +170,12 @@ const Pay = () => {
   };
 
   const handleInvoice = () => {
-    localStorage.setItem("invoice", JSON.stringify(payment));
-    navigate("/pay/invoice");
+    if (payment[0]) {
+      localStorage.setItem("invoice", JSON.stringify(payment));
+      navigate("/pay/invoice");
+    } else {
+      toast.error("No Payment Data!");
+    }
   };
   return (
     <div className={`Conatiner ${isNightMode ? "night-mode" : "day-mode"}`}>
@@ -277,7 +281,7 @@ const Pay = () => {
                     isNightMode ? "night-mode" : "day-mode"
                   }`}
                   onClick={() => window.location.reload()}
-                  style={{cursor: "pointer"}}
+                  style={{ cursor: "pointer" }}
                 >
                   <img src={isNightMode ? walletbox : walletbalck} alt="" />
                   <div className="border-line-x"></div>

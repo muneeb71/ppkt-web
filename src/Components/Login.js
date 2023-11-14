@@ -3,7 +3,7 @@ import i18n from "i18next";
 import Switch from "react-switch";
 import "./i18n";
 import React, { useEffect, useState, useRef } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import loginimg from "../Assests/Login-img.svg";
 import "../Style/Login.css";
 import conatacticon from "../Assests/conatact-icon.svg";
@@ -26,6 +26,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [inProcess, setInProcess] = useState(false);
+  const [show, setShow] = useState(1);
 
   const toggleLanguage = () => {
     const newLanguage = currentLanguage === "en" ? "de" : "en";
@@ -44,6 +45,12 @@ const Login = () => {
   ];
 
   const [activeLink, setActiveLink] = useState(null);
+  const { search } = useLocation();
+  const queryParams = new URLSearchParams(search);
+  const fromVerification = queryParams.get('verified');
+  if(fromVerification && show){
+    toast.success("Email Verified!");
+  }
 
   useEffect(() => {
     // Get the current path from window.location.pathname
@@ -55,6 +62,7 @@ const Login = () => {
     if (matchedLink) {
       setActiveLink(matchedLink.label);
     }
+    setShow(0);
   }, [links]);
 
   const handleLinkClick = (linkName) => {

@@ -73,6 +73,7 @@ const Setting = () => {
   const [phoneNo, setPhoneNo] = useState();
   const [inProcess, setInProcess] = useState(false);
   const [inProcess1, setInProcess1] = useState(false);
+  const [isClicked, setIsClicked] = useState();
   const tokenFromLocalStorage = localStorage.getItem("token");
   const token = tokenFromLocalStorage
     ? JSON.parse(tokenFromLocalStorage)
@@ -93,6 +94,12 @@ const Setting = () => {
     const newLanguage = currentLanguage === "en" ? "de" : "en";
     i18n.changeLanguage(newLanguage);
     setCurrentLanguage(newLanguage);
+  };
+
+  const toggleVisibilty = (fieldName) => {
+    setIsClicked((prevIsClicked) =>
+      prevIsClicked === fieldName ? null : fieldName
+    );
   };
 
   const toggleDayNightMode = () => {
@@ -308,7 +315,7 @@ const Setting = () => {
                           isNightMode ? "night-mode" : "day-mode"
                         }`}
                         placeholder="*************"
-                        type="password"
+                        type={isClicked == 'new_password' ? 'text' : 'password'}
                         onChange={(e) => setPassword(e.target.value)}
                       />
                     </div>
@@ -316,6 +323,7 @@ const Setting = () => {
                       className={`Copy-address ${
                         isNightMode ? "night-mode" : "day-mode"
                       }`}
+                      onClick={() => toggleVisibilty('new_password')}
                     >
                       <img src={eye} alt="" />
                     </div>
@@ -336,7 +344,7 @@ const Setting = () => {
                       </p>
 
                       <input
-                        type="password"
+                      type={isClicked == 'confirm_password' ? 'text' : 'password'}
                         className={`Amount-input ${
                           isNightMode ? "night-mode" : "day-mode"
                         }`}
@@ -348,6 +356,7 @@ const Setting = () => {
                       className={`Copy-address ${
                         isNightMode ? "night-mode" : "day-mode"
                       }`}
+                      onClick={() => toggleVisibilty('confirm_password')}
                     >
                       <img src={eye} alt="" />
                     </div>
@@ -368,7 +377,7 @@ const Setting = () => {
                       </p>
 
                       <input
-                        type="password"
+                      type={isClicked == 'old_password' ? 'text' : 'password'}
                         className={`Amount-input ${
                           isNightMode ? "night-mode" : "day-mode"
                         }`}
@@ -380,6 +389,7 @@ const Setting = () => {
                       className={`Copy-address ${
                         isNightMode ? "night-mode" : "day-mode"
                       }`}
+                      onClick={() => toggleVisibilty('old_password')}
                     >
                       <img src={eye} alt="" />
                     </div>
