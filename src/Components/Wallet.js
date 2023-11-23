@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../Style/Dashboard.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
@@ -49,11 +49,12 @@ import {
 import Loader from "./Loader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+import MainContext from "../Context/Maincontext";
 
 const Wallet = () => {
   const { t, i18n } = useTranslation();
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
-  const [isNightMode, setIsNightMode] = useState(true);
+  const {isNightMode , setIsNightMode}=useContext(MainContext)
   const [balance, setBalance] = useState({});
   const [isClicked, setIsClicked] = useState(null);
   const [transactions, setTransactions] = useState([]);
@@ -150,6 +151,7 @@ const Wallet = () => {
 
   return (
     <>
+  
      {loading ? <Loader /> : ""}
        {wallet && (
             <div
@@ -180,7 +182,7 @@ const Wallet = () => {
                       </p>
 
                       <div className="Navbar-menu">
-                        <NavLink to="/dashboard">
+                        <NavLink to="/dashboard" style={isNightMode ? {color : "white"}: {color : "black"} }>
                           <p className="Navbar-icon-text">
                             <img
                               src={isNightMode ? homewhite : home}
@@ -190,7 +192,7 @@ const Wallet = () => {
                             {t("Home")}
                           </p>
                         </NavLink>
-                        <NavLink to="/wallet">
+                        <NavLink to="/wallet" style={isNightMode ? {color : "white"}: {color : "black"} }>
                           <p className="Navbar-icon-text">
                             <img
                               src={isNightMode ? walletwhite : wallet}
@@ -201,7 +203,7 @@ const Wallet = () => {
                           </p>
                         </NavLink>
 
-                        <NavLink to="/pay">
+                        <NavLink to="/pay" style={isNightMode ? {color : "white"}: {color : "black"} }>
                           <p className="Navbar-icon-text">
                             <img
                               src={isNightMode ? Paywhite : pay}
@@ -211,7 +213,7 @@ const Wallet = () => {
                             {t("Pay")}
                           </p>
                         </NavLink>
-                        <NavLink to="/transaction">
+                        <NavLink to="/transaction" style={isNightMode ? {color : "white"}: {color : "black"} }>
                           <p className="Navbar-icon-text">
                             <img
                               src={isNightMode ? transcationwhite : transaction}
@@ -221,7 +223,7 @@ const Wallet = () => {
                             {t("Transaction_History")}
                           </p>
                         </NavLink>
-                        <NavLink to="/setting">
+                        <NavLink to="/setting" style={isNightMode ? {color : "white"}: {color : "black"} }>
                           <p className="Navbar-icon-text">
                             <img
                               src={isNightMode ? Settingwhite : setting}
@@ -285,6 +287,7 @@ const Wallet = () => {
                             src={clipboard}
                             alt=""
                             onClick={() => copyToClipboard(wallet)}
+                            className="eye-iocn"
                           />
                         </div>
                       </div>
@@ -441,7 +444,7 @@ const Wallet = () => {
                             isNightMode ? "night-mode" : "day-mode"
                           }`}
                         >
-                          {t("Wallet Address")}
+                          {t("Wallet_Address")}
                         </p>
 
                         <input

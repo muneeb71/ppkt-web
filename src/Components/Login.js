@@ -4,7 +4,7 @@ import Switch from "react-switch";
 import "./i18n";
 import React, { useEffect, useState, useRef } from "react";
 import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
-import loginimg from "../Assests/Login-img.svg";
+import loginimg from "../Assests/Group763.png";
 import "../Style/Login.css";
 import conatacticon from "../Assests/conatact-icon.svg";
 import personicon from "../Assests/Person-icon.svg";
@@ -17,9 +17,13 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Login = () => {
   const navigate = useNavigate();
+  const rememberPassword = localStorage.getItem("remember")
+    ? localStorage.getItem("remember")
+    : 0;
   const { t, i18n } = useTranslation();
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
   const [isNightMode, setIsNightMode] = useState(true);
@@ -27,6 +31,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [inProcess, setInProcess] = useState(false);
   const [show, setShow] = useState(1);
+  const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
 
   const toggleLanguage = () => {
     const newLanguage = currentLanguage === "en" ? "de" : "en";
@@ -47,23 +52,25 @@ const Login = () => {
   const [activeLink, setActiveLink] = useState(null);
   const { search } = useLocation();
   const queryParams = new URLSearchParams(search);
-  const fromVerification = queryParams.get('verified');
-  if(fromVerification && show){
+  const fromVerification = queryParams.get("verified");
+  if (fromVerification && show) {
     toast.success("Email Verified!");
   }
 
   useEffect(() => {
     // Get the current path from window.location.pathname
     const currentPath = window.location.pathname;
-
-    // Find the matching label from the links array based on the current path
     const matchedLink = links.find((link) => link.to === currentPath);
 
     if (matchedLink) {
       setActiveLink(matchedLink.label);
     }
     setShow(0);
-  }, [links]);
+    if (rememberPassword) {
+      const _pass = localStorage.getItem("password");
+      setPassword(_pass);
+    }
+  }, []);
 
   const handleLinkClick = (linkName) => {
     setActiveLink(linkName);
@@ -97,6 +104,14 @@ const Login = () => {
     }
   };
 
+  const handleCaptchaChange = (value) => {
+    setIsCaptchaVerified(value !== null);
+  };
+
+  const handleRememberPassword = () => {
+    localStorage.setItem("remember", 1);
+    localStorage.setItem("password", password);
+  };
   return (
     <div className={`Conatiner ${isNightMode ? "night-mode" : "day-mode"}`}>
       <div
@@ -140,6 +155,7 @@ const Login = () => {
                   className={`information-2 ${
                     isNightMode ? "night-mode" : "day-mode"
                   }`}
+                  // value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
@@ -160,6 +176,7 @@ const Login = () => {
                   className={`information-2 ${
                     isNightMode ? "night-mode" : "day-mode"
                   }`}
+                  value={password ? password : ""}
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}
@@ -175,8 +192,8 @@ const Login = () => {
             </div>
 
             <div className="rember-forget">
-              <p className="Rmber-check">
-                <input type="checkbox" name="" id="" />
+              <p className="Rmber-check" onClick={handleRememberPassword}>
+                <input type="checkbox" name="" id=""  />
                 {t("Remberer_Password")}
               </p>
 
@@ -185,11 +202,10 @@ const Login = () => {
               </Link>
             </div>
 
-            <div className="Robot">
-              <input type="checkbox" name="" id="" />
-              <p className="i-not-robot-text">{t("robot_text")}</p>
-              <img src={roboticon} alt="" />
-            </div>
+            <ReCAPTCHA
+              sitekey="6LfCWw8pAAAAAPu6u_uROe9z-iu3xRKYcmal8pQi"
+              onChange={handleCaptchaChange}
+            />
             <button
               type="button"
               className="login-btn"
@@ -211,7 +227,12 @@ const Login = () => {
             isNightMode ? "night-mode" : "day-mode"
           }`}
         >
-          <img src={loginimg} alt="" className="login-img-right" />
+          <img
+            src={loginimg}
+            loading="lazy"
+            alt=""
+            className="login-img-right"
+          />
         </div>
       </div>
     </div>

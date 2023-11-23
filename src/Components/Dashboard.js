@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../Style/Dashboard.css";
 import Tradinggraph from "./Tradinggraph";
@@ -39,11 +39,12 @@ import {
   timestampToDateTime,
   handleLogout,
 } from "../utils/helper";
+import MainContext from "../Context/Maincontext";
 
 const Dashboard = () => {
   const { t, i18n } = useTranslation();
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
-  const [isNightMode, setIsNightMode] = useState(true);
+  const {isNightMode , setIsNightMode}=useContext(MainContext)
   const [balance, setBalance] = useState({});
   const [transactions, setTransactions] = useState([]);
   const [tokenRate, setTokenRate] = useState();
@@ -107,7 +108,7 @@ const Dashboard = () => {
                 </p>
 
                 <div className="Navbar-menu">
-                  <NavLink to="/dashboard">
+                  <NavLink to="/dashboard" style={isNightMode ? {color : "white"}: {color : "black"} }>
                     <p className="Navbar-icon-text">
                       <img
                         src={isNightMode ? homewhite : home}
@@ -117,7 +118,7 @@ const Dashboard = () => {
                       {t("Home")}
                     </p>
                   </NavLink>
-                  <NavLink to="/wallet">
+                  <NavLink to="/wallet" style={isNightMode ? {color : "white"}: {color : "black"} }>
                     <p className="Navbar-icon-text">
                       <img
                         src={isNightMode ? walletwhite : wallet}
@@ -128,7 +129,7 @@ const Dashboard = () => {
                     </p>
                   </NavLink>
 
-                  <NavLink to="/pay">
+                  <NavLink to="/pay" style={isNightMode ? {color : "white"}: {color : "black"} }>
                     <p className="Navbar-icon-text">
                       <img
                         src={isNightMode ? Paywhite : pay}
@@ -139,7 +140,7 @@ const Dashboard = () => {
                     </p>
                   </NavLink>
 
-                  <NavLink to="/transaction">
+                  <NavLink to="/transaction" style={isNightMode ? {color : "white"}: {color : "black"} }>
                     <p className="Navbar-icon-text">
                       <img
                         src={isNightMode ? transcationwhite : transaction}
@@ -150,7 +151,7 @@ const Dashboard = () => {
                     </p>
                   </NavLink>
 
-                  <NavLink to="/setting">
+                  <NavLink to="/setting" style={isNightMode ? {color : "white"}: {color : "black"} }>
                     <p className="Navbar-icon-text">
                       <img
                         src={isNightMode ? Settingwhite : setting}
@@ -195,7 +196,7 @@ const Dashboard = () => {
                     isNightMode ? "night-mode" : "day-mode"
                   }`}
                 >
-                  <div className="profile-img">
+               <div className="profile-img">
                     <img src={user && user.image ? user.image : profileimg} height={30} width={80} alt="" className="profile-img-icon" />
                   </div>
 
@@ -258,7 +259,7 @@ const Dashboard = () => {
                 }`}
               >
                 <div className="transaction-detail">
-                  <h3 className="transaction-heading">{t("Transactions")}</h3>
+                  <h3 className="transaction-heading">{t("Transaction")}</h3>
 
                   {transactions.native_tranx &&
                     transactions.native_tranx.slice(-3).map((transaction) => (
@@ -307,27 +308,25 @@ const Dashboard = () => {
                 isNightMode ? "night-mode" : "day-mode"
               }`}
             >
-              <div className="Changes-button">
-                <button
-                  className={`Language-change-btn ${
-                    isNightMode ? "night-mode" : "day-mode"
-                  }`}
-                  onClick={toggleLanguage}
-                >
-                  <img
-                    src={currentLanguage === "en" ? germanyFlag : usFlag}
-                    alt=""
-                  />
-                </button>
-                <button
-                  className={`day-night-mode-change-btn ${
-                    isNightMode ? "night-mode" : "day-mode"
-                  }`}
-                  onClick={toggleDayNightMode}
-                >
-                  <img src={isNightMode ? Daynight : Nightday} alt="" />
-                </button>
-              </div>
+
+            {/* Dark ANd light mode  */}
+
+          <div className="Changes-button">
+          <button
+            className={`Language-change-btn ${isNightMode ? "night-mode" : "day-mode"}`}
+            onClick={toggleLanguage}
+          >
+            <img src={currentLanguage === "en" ? germanyFlag : usFlag} alt="" />
+          </button>
+          <button
+            className={`day-night-mode-change-btn ${isNightMode ? "night-mode" : "day-mode"}`}
+            onClick={toggleDayNightMode}
+          >
+            <img src={isNightMode ? Daynight : Nightday} alt="" />
+          </button>
+        </div>
+
+        {/* End */}
 
               <div
                 className={`right-content-1 ${
@@ -338,7 +337,7 @@ const Dashboard = () => {
                   <img src={pkrttoken} alt="" className="pkr-token-2" />
                   <p className="send-recive-text">
                     {t("Send_Receive")}{" "}
-                    <span className="Instanatly-text">instantly</span>”
+                    <span className="Instanatly-text">{t("Instantly")}</span>”
                   </p>
                 </div>
 

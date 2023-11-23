@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../Style/Dashboard.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
@@ -58,11 +58,12 @@ import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { handleLogout } from "../utils/helper";
 import { firebase } from "../utils/firebase";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import MainContext from "../Context/Maincontext";
 
 const Setting = () => {
   const { t, i18n } = useTranslation();
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
-  const [isNightMode, setIsNightMode] = useState(true);
+  const {isNightMode , setIsNightMode}=useContext(MainContext)
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
   const [oldPassword, setOldPassword] = useState();
@@ -73,6 +74,7 @@ const Setting = () => {
   const [phoneNo, setPhoneNo] = useState();
   const [inProcess, setInProcess] = useState(false);
   const [inProcess1, setInProcess1] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [isClicked, setIsClicked] = useState();
   const tokenFromLocalStorage = localStorage.getItem("token");
   const token = tokenFromLocalStorage
@@ -198,418 +200,418 @@ const Setting = () => {
 
   return (
     <div className={`Conatiner ${isNightMode ? "night-mode" : "day-mode"}`}>
-      <div
-        className={`Main-container ${isNightMode ? "night-mode" : "day-mode"}`}
-      >
-        <div className={`Content ${isNightMode ? "night-mode" : "day-mode"}`}>
+    <div
+      className={`Main-container ${isNightMode ? "night-mode" : "day-mode"}`}
+    >
+      <div className={`Content ${isNightMode ? "night-mode" : "day-mode"}`}>
+        <div
+          className={`Left-side ${isNightMode ? "night-mode" : "day-mode"}`}
+        >
           <div
-            className={`Left-side ${isNightMode ? "night-mode" : "day-mode"}`}
+            className={`side_navbar ${
+              isNightMode ? "night-mode" : "day-mode"
+            }`}
           >
-            <div
-              className={`side_navbar ${
+            <p>
+              <img src={Logo} alt="" className="Logo-pkrt" />
+            </p>
+
+            <div className="Navbar-menu">
+              <NavLink to="/dashboard" style={isNightMode ? {color : "white"}: {color : "black"} }>
+                <p className="Navbar-icon-text">
+                  <img
+                    src={isNightMode ? homewhite : home}
+                    alt=""
+                    className="Home-pkrt"
+                  />{" "}
+                  {t("Home")}
+                </p>
+              </NavLink>
+              <NavLink to="/wallet" style={isNightMode ? {color : "white"}: {color : "black"} }>
+                <p className="Navbar-icon-text">
+                  <img
+                    src={isNightMode ? walletwhite : wallet}
+                    alt=""
+                    className="Wallet-pkrt"
+                  />{" "}
+                  {t("Wallet")}
+                </p>
+              </NavLink>
+
+              <NavLink to="/pay" style={isNightMode ? {color : "white"}: {color : "black"} }>
+                <p className="Navbar-icon-text">
+                  <img
+                    src={isNightMode ? Paywhite : pay}
+                    alt=""
+                    className="pay-pkrt"
+                  />{" "}
+                  {t("Pay")}
+                </p>
+              </NavLink>
+
+              <NavLink to="/transaction" style={isNightMode ? {color : "white"}: {color : "black"} }>
+                <p className="Navbar-icon-text">
+                  <img
+                    src={isNightMode ? transcationwhite : transaction}
+                    alt=""
+                    className="Transaction-pkrt"
+                  />{" "}
+                  {t("Transaction_History")}
+                </p>
+              </NavLink>
+
+              <NavLink to="/setting" style={isNightMode ? {color : "white"}: {color : "black"} }>
+                <p className="Navbar-icon-text">
+                  <img
+                    src={isNightMode ? Settingwhite : setting}
+                    alt=""
+                    className="setting-pkrt"
+                  />
+                  {t("Setting")}
+                </p>
+              </NavLink>
+              <p
+                className="Navbar-icon-text-2"
+                onClick={() => {
+                  handleLogout();
+                  navigate("/");
+                }}
+              >
+                <img
+                  src={isNightMode ? Logoutwhite : logout}
+                  alt=""
+                  className="Logout-pkrt"
+                />
+                {t("logout")}
+              </p>
+            </div>
+          </div>
+
+          <p className="Wallet-text">{t("Setting")}</p>
+
+          <div
+            className={`top-content-wallet ${
+              isNightMode ? "night-mode" : "day-mode"
+            }`}
+          >
+            <p className="Setting-text">{t("Security")}</p>
+
+            <div className="Password-change">
+              <div className="pay-inputs">
+                <div className="Amount-wrap">
+                  <div
+                    className={`wallet-address ${
+                      isNightMode ? "night-mode" : "day-mode"
+                    }`}
+                  >
+                    <p
+                      className={`Amount-heading ${
+                        isNightMode ? "night-mode" : "day-mode"
+                      }`}
+                    >
+                      {t("New_password")}
+                    </p>
+
+                    <input
+            className={`Amount-input ${
+              isNightMode ? "night-mode" : "day-mode"
+            }`}
+            placeholder="*************"
+            type={showPassword ? "text" : "password"}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+                  </div>
+                  <div
+          className={`Copy-address ${
+            isNightMode ? "night-mode" : "day-mode"
+          }`}
+          onClick={() => setShowPassword(!showPassword)}
+        >
+       <img src={eye} alt="" className="eye-iocn"/>
+        </div>
+                </div>
+
+                <div className="Amount-wrap">
+                  <div
+                    className={`wallet-address ${
+                      isNightMode ? "night-mode" : "day-mode"
+                    }`}
+                  >
+                    <p
+                      className={`Amount-heading ${
+                        isNightMode ? "night-mode" : "day-mode"
+                      }`}
+                    >
+                      {t("Confirm_Password")}
+                    </p>
+
+                    <input
+            className={`Amount-input ${
+              isNightMode ? "night-mode" : "day-mode"
+            }`}
+            placeholder="*************"
+            type={showPassword ? "text" : "password"}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+                  </div>
+                  <div
+          className={`Copy-address ${
+            isNightMode ? "night-mode" : "day-mode"
+          }`}
+          onClick={() => setShowPassword(!showPassword)}
+        >
+              <img src={eye} alt="" className="eye-iocn"/>
+        </div>
+                </div>
+
+                <div className="Amount-wrap">
+                  <div
+                    className={`wallet-address ${
+                      isNightMode ? "night-mode" : "day-mode"
+                    }`}
+                  >
+                    <p
+                      className={`Amount-heading ${
+                        isNightMode ? "night-mode" : "day-mode"
+                      }`}
+                    >
+                      {t("Enter_Last_Password")}
+                    </p>
+
+                    <input
+            className={`Amount-input ${
+              isNightMode ? "night-mode" : "day-mode"
+            }`}
+            placeholder="*************"
+            type={showPassword ? "text" : "password"}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+                  </div>
+                  <div
+          className={`Copy-address ${
+            isNightMode ? "night-mode" : "day-mode"
+          }`}
+          onClick={() => setShowPassword(!showPassword)}
+        >
+          <img src={eye} alt="" className="eye-iocn"/>
+        </div>
+                </div>
+
+                <button
+                  type="button"
+                  className="Update-password-btn"
+                  onClick={() => handleChangePassword()}
+                >
+                  {inProcess1 ? (
+                    <FontAwesomeIcon icon={faCircleNotch} spin />
+                  ) : (
+                    t("Update_Password")
+                  )}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          className={`right-side ${isNightMode ? "night-mode" : "day-mode"}`}
+        >
+          <div className="Changes-button">
+            <button
+              className={`Language-change-btn ${
                 isNightMode ? "night-mode" : "day-mode"
               }`}
+              onClick={toggleLanguage}
             >
-              <p>
-                <img src={Logo} alt="" className="Logo-pkrt" />
-              </p>
+              <img
+                src={currentLanguage === "en" ? germanyFlag : usFlag}
+                alt=""
+              />
+            </button>
+            <button
+              className={`day-night-mode-change-btn ${
+                isNightMode ? "night-mode" : "day-mode"
+              }`}
+              onClick={toggleDayNightMode}
+            >
+              <img src={isNightMode ? Daynight : Nightday} alt="" />
+            </button>
+          </div>
 
-              <div className="Navbar-menu">
-                <NavLink to="/dashboard">
-                  <p className="Navbar-icon-text">
-                    <img
-                      src={isNightMode ? homewhite : home}
-                      alt=""
-                      className="Home-pkrt"
-                    />{" "}
-                    {t("Home")}
-                  </p>
-                </NavLink>
-                <NavLink to="/wallet">
-                  <p className="Navbar-icon-text">
-                    <img
-                      src={isNightMode ? walletwhite : wallet}
-                      alt=""
-                      className="Wallet-pkrt"
-                    />{" "}
-                    {t("Wallet")}
-                  </p>
-                </NavLink>
+          <p className="presonal-heading-text">{t("Personal_Information")}</p>
 
-                <NavLink to="/pay">
-                  <p className="Navbar-icon-text">
-                    <img
-                      src={isNightMode ? Paywhite : pay}
-                      alt=""
-                      className="pay-pkrt"
-                    />{" "}
-                    {t("Pay")}
-                  </p>
-                </NavLink>
+          <div
+            className={`right-content-1-setting ${
+              isNightMode ? "night-mode" : "day-mode"
+            }`}
+          >
+            <img
+              src={imageUrl ? imageUrl : profilepersonal}
+              height={150}
+              width={150}
+              alt=""
+              className="profile-persoanl"
+            />
 
-                <NavLink to="/transaction">
-                  <p className="Navbar-icon-text">
-                    <img
-                      src={isNightMode ? transcationwhite : transaction}
-                      alt=""
-                      className="Transaction-pkrt"
-                    />{" "}
-                    {t("Transaction_History")}
-                  </p>
-                </NavLink>
+            <div className="Upload-buttons">
+              <div
+                className={`empty-conatiner ${
+                  isNightMode ? "night-mode" : "day-mode"
+                }`}
+              >
+                {t("Select_jpg")}
+              </div>
+              <input
+                type="file"
+                id="fileInput"
+                style={{ display: "none" }}
+                onChange={(e) => {
+                  changeTo64(e);
+                }}
+              />
+              <button
+                type="button"
+                className="upalod-img-btn"
+                onClick={() => document.getElementById("fileInput").click()}
+              >
+                {t("Upload")}
+              </button>
+            </div>
 
-                <NavLink to="/setting">
-                  <p className="Navbar-icon-text">
-                    <img
-                      src={isNightMode ? Settingwhite : setting}
-                      alt=""
-                      className="setting-pkrt"
-                    />
-                    {t("Setting")}
-                  </p>
-                </NavLink>
+            <img
+              src={gallary}
+              alt=""
+              className={`gallary-img ${
+                isNightMode ? "night-mode" : "day-mode"
+              }`}
+            />
+          </div>
+
+          <div className="information-update">
+            <div className="email-inputs">
+              <div className="email-wrap">
                 <p
-                  className="Navbar-icon-text-2"
-                  onClick={() => {
-                    handleLogout();
-                    navigate("/");
-                  }}
+                  className={`First-name ${
+                    isNightMode ? "night-mode" : "day-mode"
+                  }`}
                 >
-                  <img
-                    src={isNightMode ? Logoutwhite : logout}
-                    alt=""
-                    className="Logout-pkrt"
-                  />
-                  {t("logout")}
+                  {" "}
+                  {t("First_Name")}
                 </p>
+                <input
+                  type="text"
+                  className={`information ${
+                    isNightMode ? "night-mode" : "day-mode"
+                  }`}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  value={firstName}
+                />
+                <div
+                  className={`Copy-address ${
+                    isNightMode ? "night-mode" : "day-mode"
+                  }`}
+                >
+                  <img src={personicon} alt="" className="eye-iocn" />
+                </div>
+              </div>
+              <div className="email-wrap">
+                <p
+                  className={`First-name ${
+                    isNightMode ? "night-mode" : "day-mode"
+                  }`}
+                >
+                  {" "}
+                  {t("Email")}
+                </p>
+                <input
+                  type="text"
+                  className={`information ${
+                    isNightMode ? "night-mode" : "day-mode"
+                  }`}
+                  readOnly={true}
+                  value={user.email}
+                />
+                <div
+                  className={`Copy-address ${
+                    isNightMode ? "night-mode" : "day-mode"
+                  }`}
+                >
+                  <img src={atherate} alt="" className="eye-iocn" />
+                </div>
               </div>
             </div>
 
-            <p className="Wallet-text">{t("Settings")}</p>
-
-            <div
-              className={`top-content-wallet ${
-                isNightMode ? "night-mode" : "day-mode"
-              }`}
-            >
-              <p className="Setting-text">{t("Security")}</p>
-
-              <div className="Password-change">
-                <div className="pay-inputs">
-                  <div className="Amount-wrap">
-                    <div
-                      className={`wallet-address ${
-                        isNightMode ? "night-mode" : "day-mode"
-                      }`}
-                    >
-                      <p
-                        className={`Amount-heading ${
-                          isNightMode ? "night-mode" : "day-mode"
-                        }`}
-                      >
-                        {t("New Password")}
-                      </p>
-
-                      <input
-                        className={`Amount-input ${
-                          isNightMode ? "night-mode" : "day-mode"
-                        }`}
-                        placeholder="*************"
-                        type={isClicked == 'new_password' ? 'text' : 'password'}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                    </div>
-                    <div
-                      className={`Copy-address ${
-                        isNightMode ? "night-mode" : "day-mode"
-                      }`}
-                      onClick={() => toggleVisibilty('new_password')}
-                    >
-                      <img src={eye} alt="" />
-                    </div>
-                  </div>
-
-                  <div className="Amount-wrap">
-                    <div
-                      className={`wallet-address ${
-                        isNightMode ? "night-mode" : "day-mode"
-                      }`}
-                    >
-                      <p
-                        className={`Amount-heading ${
-                          isNightMode ? "night-mode" : "day-mode"
-                        }`}
-                      >
-                        {t("Confirm_Password")}
-                      </p>
-
-                      <input
-                      type={isClicked == 'confirm_password' ? 'text' : 'password'}
-                        className={`Amount-input ${
-                          isNightMode ? "night-mode" : "day-mode"
-                        }`}
-                        placeholder="*************"
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                      />
-                    </div>
-                    <div
-                      className={`Copy-address ${
-                        isNightMode ? "night-mode" : "day-mode"
-                      }`}
-                      onClick={() => toggleVisibilty('confirm_password')}
-                    >
-                      <img src={eye} alt="" />
-                    </div>
-                  </div>
-
-                  <div className="Amount-wrap">
-                    <div
-                      className={`wallet-address ${
-                        isNightMode ? "night-mode" : "day-mode"
-                      }`}
-                    >
-                      <p
-                        className={`Amount-heading ${
-                          isNightMode ? "night-mode" : "day-mode"
-                        }`}
-                      >
-                        {t("Enter_Last_Password")}
-                      </p>
-
-                      <input
-                      type={isClicked == 'old_password' ? 'text' : 'password'}
-                        className={`Amount-input ${
-                          isNightMode ? "night-mode" : "day-mode"
-                        }`}
-                        onChange={(e) => setOldPassword(e.target.value)}
-                        placeholder="*************"
-                      />
-                    </div>
-                    <div
-                      className={`Copy-address ${
-                        isNightMode ? "night-mode" : "day-mode"
-                      }`}
-                      onClick={() => toggleVisibilty('old_password')}
-                    >
-                      <img src={eye} alt="" />
-                    </div>
-                  </div>
-
-                  <button
-                    type="button"
-                    className="Update-password-btn"
-                    onClick={() => handleChangePassword()}
-                  >
-                    {inProcess1 ? (
-                      <FontAwesomeIcon icon={faCircleNotch} spin />
-                    ) : (
-                      t("Update_Password")
-                    )}
-                  </button>
+            <div className="email-inputs">
+              <div className="email-wrap">
+                <p
+                  className={`First-name ${
+                    isNightMode ? "night-mode" : "day-mode"
+                  }`}
+                >
+                  {" "}
+                  {t("Last_Name")}
+                </p>
+                <input
+                  type="text"
+                  className={`information ${
+                    isNightMode ? "night-mode" : "day-mode"
+                  }`}
+                  onChange={(e) => setLastName(e.target.value)}
+                  value={lastName}
+                />
+                <div
+                  className={`Copy-address ${
+                    isNightMode ? "night-mode" : "day-mode"
+                  }`}
+                >
+                  <img src={personicon} alt="" className="eye-iocn" />
+                </div>
+              </div>
+              <div className="email-wrap">
+                <p
+                  className={`First-name ${
+                    isNightMode ? "night-mode" : "day-mode"
+                  }`}
+                >
+                  {" "}
+                  {t("Contact")}
+                </p>
+                <input
+                  type="text"
+                  className={`information ${
+                    isNightMode ? "night-mode" : "day-mode"
+                  }`}
+                  onChange={(e) => setPhoneNo(e.target.value)}
+                  value={phoneNo}
+                />
+                <div
+                  className={`Copy-address ${
+                    isNightMode ? "night-mode" : "day-mode"
+                  }`}
+                >
+                  <img src={conatacticon} alt="" className="eye-iocn"/>
                 </div>
               </div>
             </div>
           </div>
 
-          <div
-            className={`right-side ${isNightMode ? "night-mode" : "day-mode"}`}
-          >
-            <div className="Changes-button">
-              <button
-                className={`Language-change-btn ${
-                  isNightMode ? "night-mode" : "day-mode"
-                }`}
-                onClick={toggleLanguage}
-              >
-                <img
-                  src={currentLanguage === "en" ? germanyFlag : usFlag}
-                  alt=""
-                />
-              </button>
-              <button
-                className={`day-night-mode-change-btn ${
-                  isNightMode ? "night-mode" : "day-mode"
-                }`}
-                onClick={toggleDayNightMode}
-              >
-                <img src={isNightMode ? Daynight : Nightday} alt="" />
-              </button>
-            </div>
-
-            <p className="presonal-heading-text">{t("Personal_Information")}</p>
-
-            <div
-              className={`right-content-1-setting ${
-                isNightMode ? "night-mode" : "day-mode"
-              }`}
+          <div className="Buttn">
+            <button
+              type="button"
+              className="Update-button-btn"
+              onClick={() => handleProfileEdit()}
             >
-              <img
-                src={imageUrl ? imageUrl : profilepersonal}
-                height={150}
-                width={150}
-                alt=""
-                className="profile-persoanl"
-              />
-
-              <div className="Upload-buttons">
-                <div
-                  className={`empty-conatiner ${
-                    isNightMode ? "night-mode" : "day-mode"
-                  }`}
-                >
-                  {t("Select_jpg")}
-                </div>
-                <input
-                  type="file"
-                  id="fileInput"
-                  style={{ display: "none" }}
-                  onChange={(e) => {
-                    changeTo64(e);
-                  }}
-                />
-                <button
-                  type="button"
-                  className="upalod-img-btn"
-                  onClick={() => document.getElementById("fileInput").click()}
-                >
-                  {t("Upload")}
-                </button>
-              </div>
-
-              <img
-                src={gallary}
-                alt=""
-                className={`gallary-img ${
-                  isNightMode ? "night-mode" : "day-mode"
-                }`}
-              />
-            </div>
-
-            <div className="information-update">
-              <div className="email-inputs">
-                <div className="email-wrap">
-                  <p
-                    className={`First-name ${
-                      isNightMode ? "night-mode" : "day-mode"
-                    }`}
-                  >
-                    {" "}
-                    {t("First_Name")}
-                  </p>
-                  <input
-                    type="text"
-                    className={`information ${
-                      isNightMode ? "night-mode" : "day-mode"
-                    }`}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    value={firstName}
-                  />
-                  <div
-                    className={`Copy-address ${
-                      isNightMode ? "night-mode" : "day-mode"
-                    }`}
-                  >
-                    <img src={personicon} alt="" />
-                  </div>
-                </div>
-                <div className="email-wrap">
-                  <p
-                    className={`First-name ${
-                      isNightMode ? "night-mode" : "day-mode"
-                    }`}
-                  >
-                    {" "}
-                    {t("Email")}
-                  </p>
-                  <input
-                    type="text"
-                    className={`information ${
-                      isNightMode ? "night-mode" : "day-mode"
-                    }`}
-                    readOnly={true}
-                    value={user.email}
-                  />
-                  <div
-                    className={`Copy-address ${
-                      isNightMode ? "night-mode" : "day-mode"
-                    }`}
-                  >
-                    <img src={atherate} alt="" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="email-inputs">
-                <div className="email-wrap">
-                  <p
-                    className={`First-name ${
-                      isNightMode ? "night-mode" : "day-mode"
-                    }`}
-                  >
-                    {" "}
-                    {t("Last_Name")}
-                  </p>
-                  <input
-                    type="text"
-                    className={`information ${
-                      isNightMode ? "night-mode" : "day-mode"
-                    }`}
-                    onChange={(e) => setLastName(e.target.value)}
-                    value={lastName}
-                  />
-                  <div
-                    className={`Copy-address ${
-                      isNightMode ? "night-mode" : "day-mode"
-                    }`}
-                  >
-                    <img src={personicon} alt="" />
-                  </div>
-                </div>
-                <div className="email-wrap">
-                  <p
-                    className={`First-name ${
-                      isNightMode ? "night-mode" : "day-mode"
-                    }`}
-                  >
-                    {" "}
-                    {t("Contact")}
-                  </p>
-                  <input
-                    type="text"
-                    className={`information ${
-                      isNightMode ? "night-mode" : "day-mode"
-                    }`}
-                    onChange={(e) => setPhoneNo(e.target.value)}
-                    value={phoneNo}
-                  />
-                  <div
-                    className={`Copy-address ${
-                      isNightMode ? "night-mode" : "day-mode"
-                    }`}
-                  >
-                    <img src={conatacticon} alt="" />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="Buttn">
-              <button
-                type="button"
-                className="Update-button-btn"
-                onClick={() => handleProfileEdit()}
-              >
-                {inProcess ? (
-                  <FontAwesomeIcon icon={faCircleNotch} spin />
-                ) : (
-                  t("Update")
-                )}
-              </button>
-            </div>
+              {inProcess ? (
+                <FontAwesomeIcon icon={faCircleNotch} spin />
+              ) : (
+                t("Update")
+              )}
+            </button>
           </div>
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

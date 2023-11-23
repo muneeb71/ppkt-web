@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../Style/Dashboard.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
@@ -48,12 +48,13 @@ import DatepickerInput from "./Datepicker";
 import axios from "axios";
 import { get_token_rate, handleLogout } from "../utils/helper";
 import { toast } from "react-toastify";
+import MainContext from "../Context/Maincontext";
 
 const Pay = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
-  const [isNightMode, setIsNightMode] = useState(true);
+  const {isNightMode , setIsNightMode}=useContext(MainContext)
   const [amount, setAmount] = useState(0);
   const [maticConversion, setMaticConversion] = useState(0);
   const [maticRate, setMaticRate] = useState(0);
@@ -179,351 +180,351 @@ const Pay = () => {
   };
   return (
     <div className={`Conatiner ${isNightMode ? "night-mode" : "day-mode"}`}>
-      <div
-        className={`Main-container ${isNightMode ? "night-mode" : "day-mode"}`}
-      >
-        <div className={`Content ${isNightMode ? "night-mode" : "day-mode"}`}>
+    <div
+      className={`Main-container ${isNightMode ? "night-mode" : "day-mode"}`}
+    >
+      <div className={`Content ${isNightMode ? "night-mode" : "day-mode"}`}>
+        <div
+          className={`Left-side ${isNightMode ? "night-mode" : "day-mode"}`}
+        >
           <div
-            className={`Left-side ${isNightMode ? "night-mode" : "day-mode"}`}
+            className={`side_navbar ${
+              isNightMode ? "night-mode" : "day-mode"
+            }`}
           >
-            <div
-              className={`side_navbar ${
-                isNightMode ? "night-mode" : "day-mode"
-              }`}
-            >
-              <p>
-                <img src={Logo} alt="" className="Logo-pkrt" />
-              </p>
+            <p>
+              <img src={Logo} alt="" className="Logo-pkrt" />
+            </p>
 
-              <div className="Navbar-menu">
-                <NavLink to="/dashboard">
-                  <p className="Navbar-icon-text">
-                    <img
-                      src={isNightMode ? homewhite : home}
-                      alt=""
-                      className="Home-pkrt"
-                    />{" "}
-                    {t("Home")}
-                  </p>
-                </NavLink>
-                <NavLink to="/wallet">
-                  <p className="Navbar-icon-text">
-                    <img
-                      src={isNightMode ? walletwhite : wallet}
-                      alt=""
-                      className="Wallet-pkrt"
-                    />{" "}
-                    {t("Wallet")}
-                  </p>
-                </NavLink>
-
-                <NavLink to="/pay">
-                  <p className="Navbar-icon-text">
-                    <img
-                      src={isNightMode ? Paywhite : pay}
-                      alt=""
-                      className="pay-pkrt"
-                    />{" "}
-                    {t("Pay")}
-                  </p>
-                </NavLink>
-
-                <NavLink to="/transaction">
-                  <p className="Navbar-icon-text">
-                    <img
-                      src={isNightMode ? transcationwhite : transaction}
-                      alt=""
-                      className="Transaction-pkrt"
-                    />{" "}
-                    {t("Transaction_History")}
-                  </p>
-                </NavLink>
-
-                <NavLink to="/setting">
-                  <p className="Navbar-icon-text">
-                    <img
-                      src={isNightMode ? Settingwhite : setting}
-                      alt=""
-                      className="setting-pkrt"
-                    />
-                    {t("Setting")}
-                  </p>
-                </NavLink>
-                <p
-                  className="Navbar-icon-text-2"
-                  onClick={() => {
-                    handleLogout();
-                    navigate("/");
-                  }}
-                >
+            <div className="Navbar-menu">
+              <NavLink to="/dashboard" style={isNightMode ? {color : "white"}: {color : "black"} }>
+                <p className="Navbar-icon-text">
                   <img
-                    src={isNightMode ? Logoutwhite : logout}
+                    src={isNightMode ? homewhite : home}
                     alt=""
-                    className="Logout-pkrt"
-                  />
-                  {t("logout")}
+                    className="Home-pkrt"
+                  />{" "}
+                  {t("Home")}
                 </p>
-              </div>
-            </div>
+              </NavLink>
+              <NavLink to="/wallet" style={isNightMode ? {color : "white"}: {color : "black"} }>
+                <p className="Navbar-icon-text">
+                  <img
+                    src={isNightMode ? walletwhite : wallet}
+                    alt=""
+                    className="Wallet-pkrt"
+                  />{" "}
+                  {t("Wallet")}
+                </p>
+              </NavLink>
 
-            <p className="Wallet-text">{t(" Pay")}</p>
+              <NavLink to="/pay" style={isNightMode ? {color : "white"}: {color : "black"} }>
+                <p className="Navbar-icon-text">
+                  <img
+                    src={isNightMode ? Paywhite : pay}
+                    alt=""
+                    className="pay-pkrt"
+                  />{" "}
+                  {t("Pay")}
+                </p>
+              </NavLink>
 
-            <div
-              className={`top-content-wallet ${
-                isNightMode ? "night-mode" : "day-mode"
-              }`}
-            >
-              <div className="Pay-wrap">
-                <p className="chain-text">{t("chain")}</p>
+              <NavLink to="/transaction" style={isNightMode ? {color : "white"}: {color : "black"} }>
+                <p className="Navbar-icon-text">
+                  <img
+                    src={isNightMode ? transcationwhite : transaction}
+                    alt=""
+                    className="Transaction-pkrt"
+                  />{" "}
+                  {t("Transaction_History")}
+                </p>
+              </NavLink>
 
-                <div
-                  className={`New-payement ${
-                    isNightMode ? "night-mode" : "day-mode"
-                  }`}
-                  onClick={() => window.location.reload()}
-                  style={{ cursor: "pointer" }}
-                >
-                  <img src={isNightMode ? walletbox : walletbalck} alt="" />
-                  <div className="border-line-x"></div>
-                  <p className="Payement-text">{t("Payement")}</p>
-                </div>
-              </div>
-
-              <div
-                className={`Coin-selector ${
-                  isNightMode ? "night-mode" : "day-mode"
-                }`}
+              <NavLink to="/setting" style={isNightMode ? {color : "white"}: {color : "black"} }>
+                <p className="Navbar-icon-text">
+                  <img
+                    src={isNightMode ? Settingwhite : setting}
+                    alt=""
+                    className="setting-pkrt"
+                  />
+                  {t("Setting")}
+                </p>
+              </NavLink>
+              <p
+                className="Navbar-icon-text-2"
+                onClick={() => {
+                  handleLogout();
+                  navigate("/");
+                }}
               >
-                <img src={Pkrtbig} alt="" className="qr-code-pkrt-pic" />
-              </div>
-
-              <div className="address">
-                <div className="pay-inputs">
-                  <div className="wallet-address-wrap">
-                    <div
-                      className={`wallet-address ${
-                        isNightMode ? "night-mode" : "day-mode"
-                      }`}
-                    >
-                      <p
-                        className={`Wallet-address-heading ${
-                          isNightMode ? "night-mode" : "day-mode"
-                        }`}
-                      >
-                        {t("Wallet_Address")}
-                      </p>
-                      <p className="address-code">
-                        {walletAddress.slice(0, 12) +
-                          "..." +
-                          walletAddress.slice(-12)}
-                      </p>
-                    </div>
-                    <div
-                      className={`Copy-address ${
-                        isNightMode ? "night-mode" : "day-mode"
-                      }`}
-                    >
-                      <img src={scanqr} alt="" />
-                    </div>
-                  </div>
-
-                  <div className="Amount-wrap">
-                    <div
-                      className={`wallet-address ${
-                        isNightMode ? "night-mode" : "day-mode"
-                      }`}
-                    >
-                      <p
-                        className={`Amount-heading ${
-                          isNightMode ? "night-mode" : "day-mode"
-                        }`}
-                      >
-                        {t("Amount")}
-                      </p>
-
-                      <input
-                        type="text"
-                        className={`Amount-input ${
-                          isNightMode ? "night-mode" : "day-mode"
-                        }`}
-                        placeholder="0.0"
-                        onChange={(e) => handleAmountChange(e)}
-                        value={amount}
-                      />
-                    </div>
-                    <div
-                      className={`Copy-address ${
-                        isNightMode ? "night-mode" : "day-mode"
-                      }`}
-                    >
-                      <img src={amounticon} alt="" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <p className="Conversion-Heading">{t(" Conversion")}</p>
-
-              <div className="Pay-cards-conversion">
-                <div
-                  className={`conversion-1 ${
-                    isNightMode ? "night-mode" : "day-mode"
-                  }`}
-                >
-                  <img src={polygonimg} alt="" className="Conversion-pic" />
-                  <p className="conversion-balnce">
-                    $ {maticConversion.toLocaleString()}
-                  </p>
-                </div>
-
-                <div
-                  className={`conversion-1 ${
-                    isNightMode ? "night-mode" : "day-mode"
-                  }`}
-                >
-                  <img src={pkrttoken} alt="" className="Conversion-pic" />
-                  <p className="conversion-balnce">
-                    $ {amount.toLocaleString()}
-                  </p>
-                </div>
-
-                <div
-                  className={`conversion-1 ${
-                    isNightMode ? "night-mode" : "day-mode"
-                  }`}
-                >
-                  <img src={dollarsign} alt="" className="Conversion-pic" />
-                  <p className="conversion-balnce">
-                    $ {amount.toLocaleString()}
-                  </p>
-                </div>
-              </div>
-
-              <button
-                type="button"
-                className="Gerante-qr-btn"
-                onClick={() => generateQr()}
-              >
-                {t("GernateQr")}
-              </button>
+                <img
+                  src={isNightMode ? Logoutwhite : logout}
+                  alt=""
+                  className="Logout-pkrt"
+                />
+                {t("logout")}
+              </p>
             </div>
           </div>
 
+          <p className="Wallet-text">{t(" Pay")}</p>
+
           <div
-            className={`right-side ${isNightMode ? "night-mode" : "day-mode"}`}
+            className={`top-content-wallet ${
+              isNightMode ? "night-mode" : "day-mode"
+            }`}
           >
-            <div className="Changes-button">
-              <button
-                className={`Language-change-btn ${
-                  isNightMode ? "night-mode" : "day-mode"
-                }`}
-                onClick={toggleLanguage}
-              >
-                <img
-                  src={currentLanguage === "en" ? germanyFlag : usFlag}
-                  alt=""
-                />
-              </button>
-              <button
-                className={`day-night-mode-change-btn ${
-                  isNightMode ? "night-mode" : "day-mode"
-                }`}
-                onClick={toggleDayNightMode}
-              >
-                <img src={isNightMode ? Daynight : Nightday} alt="" />
-              </button>
-            </div>
-
-            <p className="withdraw-heading-text">{t("Qr_code")}</p>
-
-            <p className="Qr-code-scan-text">{t("Scanqrcode")}</p>
-
-            <img src={qr ? qr : qrcodepic} alt="" className="qr-code-img" />
-
-            <div className="Walle-Amount">
-              <div
-                className={`wallet-address ${
-                  isNightMode ? "night-mode" : "day-mode"
-                }`}
-              >
-                <p
-                  className={`Amount-heading ${
-                    isNightMode ? "night-mode" : "day-mode"
-                  }`}
-                >
-                  {t("Amount")}
-                </p>
-
-                <input
-                  type="text"
-                  className={`Amount-input ${
-                    isNightMode ? "night-mode" : "day-mode"
-                  }`}
-                  placeholder="$ 8547.54"
-                  value={amount}
-                  disabled={true}
-                />
-              </div>
+            <div className="Pay-wrap">
+              <p className="chain-text">{t("chain")}</p>
 
               <div
-                className={`wallet-address ${
+                className={`New-payement ${
                   isNightMode ? "night-mode" : "day-mode"
                 }`}
+                onClick={() => window.location.reload()}
+                style={{cursor: "pointer"}}
               >
-                <p
-                  className={`Amount-heading ${
-                    isNightMode ? "night-mode" : "day-mode"
-                  }`}
-                >
-                  {t("Date")}
-                </p>
-
-                <input
-                  type="text"
-                  className={`Amount-input ${
-                    isNightMode ? "night-mode" : "day-mode"
-                  }`}
-                  value={date ? new Date(date) : ""}
-                  disabled={true}
-                />
+                <img src={isNightMode ? walletbox : walletbalck} alt="" />
+                <div className="border-line-x"></div>
+                <p className="Payement-text">{t("Payement")}</p>
               </div>
-            </div>
-
-            <div className="Buttn">
-              <button
-                type="button"
-                className="verify-btn"
-                onClick={(e) => {
-                  verifyPayment();
-                }}
-              >
-                {t("Verify_payements")}
-              </button>
-              <button
-                type="button"
-                className="check-transaction-btn"
-                onClick={checkPayment}
-              >
-                {t("Check_transaction")}
-              </button>
             </div>
 
             <div
-              className={`Invoice ${isNightMode ? "night-mode" : "day-mode"}`}
-              onClick={handleInvoice}
-              style={{ cursor: "pointer" }}
+              className={`Coin-selector ${
+                isNightMode ? "night-mode" : "day-mode"
+              }`}
+            >
+              <img src={Pkrtbig} alt="" className="qr-code-pkrt-pic" />
+            </div>
+
+            <div className="address">
+              <div className="pay-inputs">
+                <div className="wallet-address-wrap">
+                  <div
+                    className={`wallet-address ${
+                      isNightMode ? "night-mode" : "day-mode"
+                    }`}
+                  >
+                    <p
+                      className={`Wallet-address-heading ${
+                        isNightMode ? "night-mode" : "day-mode"
+                      }`}
+                    >
+                      {t("Wallet_Address")}
+                    </p>
+                    <p className="address-code">
+                      {walletAddress.slice(0, 12) +
+                        "..." +
+                        walletAddress.slice(-12)}
+                    </p>
+                  </div>
+                  <div
+                    className={`Copy-address ${
+                      isNightMode ? "night-mode" : "day-mode"
+                    }`}
+                  >
+                    <img src={scanqr} alt="" className="eye-iocn" />
+                  </div>
+                </div>
+
+                <div className="Amount-wrap">
+                  <div
+                    className={`wallet-address ${
+                      isNightMode ? "night-mode" : "day-mode"
+                    }`}
+                  >
+                    <p
+                      className={`Amount-heading ${
+                        isNightMode ? "night-mode" : "day-mode"
+                      }`}
+                    >
+                      {t("Amount")}
+                    </p>
+
+                    <input
+                      type="text"
+                      className={`Amount-input ${
+                        isNightMode ? "night-mode" : "day-mode"
+                      }`}
+                      placeholder="0.0"
+                      onChange={(e) => handleAmountChange(e)}
+                      value={amount}
+                    />
+                  </div>
+                  <div
+                    className={`Copy-address ${
+                      isNightMode ? "night-mode" : "day-mode"
+                    }`}
+                  >
+                    <img src={amounticon} alt="" className="eye-iocn" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p className="Conversion-Heading">{t(" Conversion")}</p>
+
+            <div className="Pay-cards-conversion">
+              <div
+                className={`conversion-1 ${
+                  isNightMode ? "night-mode" : "day-mode"
+                }`}
+              >
+                <img src={polygonimg} alt="" className="Conversion-pic" />
+                <p className="conversion-balnce">
+                  $ {maticConversion.toLocaleString()}
+                </p>
+              </div>
+
+              <div
+                className={`conversion-1 ${
+                  isNightMode ? "night-mode" : "day-mode"
+                }`}
+              >
+                <img src={pkrttoken} alt="" className="Conversion-pic" />
+                <p className="conversion-balnce">
+                  $ {amount.toLocaleString()}
+                </p>
+              </div>
+
+              <div
+                className={`conversion-1 ${
+                  isNightMode ? "night-mode" : "day-mode"
+                }`}
+              >
+                <img src={dollarsign} alt="" className="Conversion-pic" />
+                <p className="conversion-balnce">
+                  $ {amount.toLocaleString()}
+                </p>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              className="Gerante-qr-btn"
+              onClick={() => generateQr()}
+            >
+              {t("GernateQr")}
+            </button>
+          </div>
+        </div>
+
+        <div
+          className={`right-side ${isNightMode ? "night-mode" : "day-mode"}`}
+        >
+          <div className="Changes-button">
+            <button
+              className={`Language-change-btn ${
+                isNightMode ? "night-mode" : "day-mode"
+              }`}
+              onClick={toggleLanguage}
             >
               <img
-                src={isNightMode ? printericonwhite : printericonblack}
+                src={currentLanguage === "en" ? germanyFlag : usFlag}
                 alt=""
               />
-              <div className="border-line-x"></div>
-              <p className="Payement-text">{t("Invoice")}</p>
+            </button>
+            <button
+              className={`day-night-mode-change-btn ${
+                isNightMode ? "night-mode" : "day-mode"
+              }`}
+              onClick={toggleDayNightMode}
+            >
+              <img src={isNightMode ? Daynight : Nightday} alt="" />
+            </button>
+          </div>
+
+          <p className="withdraw-heading-text">{t("Qr_code")}</p>
+
+          <p className="Qr-code-scan-text">{t("Scanqrcode")}</p>
+
+          <img src={qr ? qr : qrcodepic} alt="" className="qr-code-img" />
+
+          <div className="Walle-Amount">
+            <div
+              className={`wallet-address ${
+                isNightMode ? "night-mode" : "day-mode"
+              }`}
+            >
+              <p
+                className={`Amount-heading ${
+                  isNightMode ? "night-mode" : "day-mode"
+                }`}
+              >
+                {t("Amount")}
+              </p>
+
+              <input
+                type="text"
+                className={`Amount-input ${
+                  isNightMode ? "night-mode" : "day-mode"
+                }`}
+                placeholder="$ 8547.54"
+                value={amount}
+                disabled={true}
+              />
             </div>
+
+            <div
+              className={`wallet-address ${
+                isNightMode ? "night-mode" : "day-mode"
+              }`}
+            >
+              <p
+                className={`Amount-heading ${
+                  isNightMode ? "night-mode" : "day-mode"
+                }`}
+              >
+                {t("Date")}
+              </p>
+
+              <input
+                type="text"
+                className={`Amount-input ${
+                  isNightMode ? "night-mode" : "day-mode"
+                }`}
+                value={date ? new Date(date) : ""}
+                disabled={true}
+              />
+            </div>
+          </div>
+
+          <div className="Buttn">
+            <button
+              type="button"
+              className="verify-btn"
+              onClick={(e) => {
+                verifyPayment();
+              }}
+            >
+              {t("Verify_payements")}
+            </button>
+            <button
+              type="button"
+              className="check-transaction-btn"
+              onClick={checkPayment}
+            >
+              {t("Check_transaction")}
+            </button>
+          </div>
+
+          <div
+            className={`Invoice ${isNightMode ? "night-mode" : "day-mode"}`}
+            onClick={handleInvoice}
+            style={{ cursor: "pointer" }}
+          >
+            <img
+              src={isNightMode ? printericonwhite : printericonblack}
+              alt=""
+            />
+            <div className="border-line-x"></div>
+            <p className="Payement-text">{t("Invoice")}</p>
           </div>
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

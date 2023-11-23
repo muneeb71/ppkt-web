@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../Style/Dashboard.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
@@ -51,11 +51,12 @@ import {
   timestampToDateTime,
 } from "../utils/helper";
 import Loader from "./Loader";
+import MainContext from "../Context/Maincontext";
 
 const Transaction = () => {
   const { t, i18n } = useTranslation();
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
-  const [isNightMode, setIsNightMode] = useState(true);
+  const {isNightMode , setIsNightMode}=useContext(MainContext)
   const [transactions, setTransactions] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   const token = localStorage.getItem("token");
@@ -107,7 +108,7 @@ const Transaction = () => {
             </p>
 
             <div className="Navbar-menu">
-              <NavLink to="/dashboard">
+              <NavLink to="/dashboard" style={isNightMode ? {color : "white"}: {color : "black"} }>
                 <p className="Navbar-icon-text">
                   <img
                     src={isNightMode ? homewhite : home}
@@ -117,7 +118,7 @@ const Transaction = () => {
                   {t("Home")}
                 </p>
               </NavLink>
-              <NavLink to="/wallet">
+              <NavLink to="/wallet" style={isNightMode ? {color : "white"}: {color : "black"} }>
                 <p className="Navbar-icon-text">
                   <img
                     src={isNightMode ? walletwhite : wallet}
@@ -128,7 +129,7 @@ const Transaction = () => {
                 </p>
               </NavLink>
 
-              <NavLink to="/pay">
+              <NavLink to="/pay" style={isNightMode ? {color : "white"}: {color : "black"} }>
                 <p className="Navbar-icon-text">
                   <img
                     src={isNightMode ? Paywhite : pay}
@@ -146,7 +147,7 @@ const Transaction = () => {
                 />{" "}
                 {t("Transaction_History")}
               </p>
-              <NavLink to="/setting">
+              <NavLink to="/setting" style={isNightMode ? {color : "white"}: {color : "black"} }>
                 <p className="Navbar-icon-text">
                   <img
                     src={isNightMode ? Settingwhite : setting}
