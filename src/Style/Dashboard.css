@@ -219,8 +219,9 @@ border: 1px solid #C8C8C8;
 .wrap{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   gap: 1rem;
+  padding-left: 27px;
   
 
 }
@@ -403,7 +404,7 @@ justify-content: center;
 
 .corner-design{
   position: relative;
-  left: 3rem;
+  /* left: 3rem; */
 }
 
 
@@ -617,7 +618,7 @@ position: relative;
 
 
 .Name-text{
-  color: #333378;
+  color: #6969d1;
 }
 
 
@@ -670,9 +671,11 @@ text-decoration-line: none;
 
 
 .Navbar-menu{
-  width: 5rem;
-  margin-left: 1.3rem;
-  display: grid;
+  width: 11rem;
+  margin-left: -1.7rem;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .current-balance-heading{
@@ -704,13 +707,13 @@ font-weight: 600;
 line-height: 29px;
 letter-spacing: 0em;
 text-align: left;
-width: 14rem;
+
 
 }
 
 
 .Instanatly-text{
-  color: #333378;
+  color: #6969d1;
   font-family: Montserrat;
   font-size: 24px;
   font-weight: 600;

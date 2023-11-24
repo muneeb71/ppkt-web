@@ -1,0 +1,5 @@
+/* Try more specific selectors */
+.tradingview-widget-container .tv-feed-widget-container .tv-feed-widget {
+    border: none !important;
+  }
+  

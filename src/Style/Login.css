@@ -169,7 +169,7 @@ font-weight: 400;
 line-height: 15px;
 letter-spacing: 0em;
 text-align: left;
-color: #333378;
+color: #6969d1;;
 }
 
 .Robot{
@@ -210,7 +210,7 @@ color: black;
 /* Define styles for active link */
 .link-active {
     border-bottom: 2px solid #FFFFFF;
-    color: #333378;
+    color: #6969d1;;
     text-decoration: none;
   }
   
@@ -235,7 +235,7 @@ color: black;
   }
 
   .privacy-text{
-    color: #333378;
+    color: #6969d1;
 
     font-family: Montserrat;
 font-size: 20px;

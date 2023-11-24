@@ -45,7 +45,7 @@ import "../Style/Pay.css";
 import DatepickerInput from "./Datepicker";
 import "../Style/Setting.css";
 import eye from "../Assests/Eyes-password.svg";
-import profilepersonal from "../Assests/Profile-persoanl.svg";
+import profilepersonal from "../Assests/user_default.jpeg";
 import gallary from "../Assests/Gallary-icon.svg";
 import gallaryblack from "../Assests/Gallary-black-icon.svg";
 import conatacticon from "../Assests/conatact-icon.svg";

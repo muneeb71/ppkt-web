@@ -207,7 +207,7 @@ i18n.use(initReactI18next).init({
         inovice : 'Rechnung',         
         view : 'Betrachten',
         Assets : 'Assets',
-        Instantly : 'instantly',
+        Instantly : 'sofort',
       },
     },
   },

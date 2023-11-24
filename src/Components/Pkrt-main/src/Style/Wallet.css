@@ -1,0 +1,510 @@
+.Wallet-text{
+    font-family: Montserrat;
+font-size: 20px;
+font-weight: 500;
+line-height: 24px;
+letter-spacing: 0em;
+text-align: left;
+text-decoration: underline #3F56B2;
+margin-left: 2rem;
+margin-top: 4rem;
+}
+
+
+.Scan-qr-text{
+
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    -webkit-text-decoration: underline #3F56B2;
+    text-decoration: underline #3F56B2;
+    position: relative;
+    bottom: 4rem;
+    right: 6rem;
+
+}
+.top-content-wallet{
+
+
+  width: 19.75rem;
+  height: 45.438rem;
+  background-color: #13171c;
+  border: 1px solid #13171c;
+  border-radius: 20px;
+  margin-top: 6.875rem;
+  /* margin-left: 1.25rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  /* left: 55rem; */
+  bottom: 1rem;
+  left: rem;
+  right: 1rem;
+}
+
+
+.top-content-wallet.day-mode {
+    background-color: #F2F2F2;
+    color: #000; /* Text color */
+    border: 1px solid #C8C8C8;
+    box-shadow: 0px 4px 4px 0px #00000020;
+  
+   
+  }
+
+  .wallet-address{
+    width: 15.25rem;
+    height: 2.5rem;
+    background-color: #141317;
+    border: 1px solid #141317;
+    border-radius: 5px;
+    display: flex;
+    /* align-items: center; */
+    /* gap: 1rem; */
+    justify-content: center;
+    position: relative;
+    bottom: 3rem;
+    flex-direction: column;
+
+
+}
+  
+
+  .wallet-address.day-mode {
+    background-color: #F2F2F2;
+    color: #000; /* Text color */
+    border: 1px solid #C8C8C8;
+    box-shadow: 0px 4px 4px 0px #00000020;
+  
+   
+  }
+
+  .Copy-address{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 5px;
+    background-color: #1E2227;
+    border: 1px solid #1E2227;
+    position: relative;
+    bottom: 3rem;
+    cursor: pointer;
+
+  }
+
+  .Copy-address.day-mode {
+    background-color:#1E2227;
+    color: #000; /* Text color */
+    border: 1px solid #C8C8C8;
+    box-shadow: 0px 4px 4px 0px #00000020;
+  
+   
+  }
+
+  .address{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Qr-code-detail{
+    width: 17.25rem;
+    height: 29.688rem;
+    background-color: #141317;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+
+  .Qr-code-detail.day-mode {
+    background-color: #F2F2F2;
+    color: #000; /* Text color */
+    border: 1px solid #C8C8C8;
+    box-shadow: 0px 4px 4px 0px #00000020;
+  
+  }
+
+  .Wallet-address-heading{
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: start;
+    margin-left: 1rem;
+    position: relative;
+    bottom: 0.2rem;
+
+  }
+
+  .Wallet-address-heading.day-mode {
+    background-color: #F2F2F2;
+    color: #000;
+    background-color: #F2F2F2;
+    color: #000;
+    width: 6rem;
+  }
+
+  .address-code{
+    font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 12px;
+    letter-spacing: 0em;
+    position: relative;
+    bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .Ensure-code-txt{
+    font-family: Montserrat;
+font-size: 15px;
+font-weight: 500;
+line-height: 18px;
+letter-spacing: 0em;
+
+position: relative;
+bottom: 3rem;
+  }
+
+  .Border-line{
+    border:1px solid #3F56B2;
+     
+    width: 10.25rem;
+    position: relative;
+    bottom: 2rem;
+  }
+
+  .qr-code-pkrt-pic{
+    position: relative;
+    bottom: 3rem;
+}
+  
+
+.right-content-Wallet{
+  width: 36.5rem;
+  height: 2.8rem;
+  background-color: #1e2227;
+  border: 1px solid #1e2227;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.3rem;
+}
+
+.right-content-Wallet.day-mode {
+  background-color: #F2F2F2;
+  color: #000; /* Text color */
+  border: 1px solid #C8C8C8;
+  box-shadow: 0px 4px 4px 0px #00000020;
+
+}
+
+.withdraw-heading-text{
+font-family: Montserrat;
+font-size: 20px;
+font-weight: 500;
+line-height: 24px;
+letter-spacing: 0em;
+text-align: left;
+border-bottom: 1px solid #3F56B2;
+width: 5.6rem;
+}
+
+.Conversion-Text{
+  font-family: Montserrat;
+font-size: 16px;
+font-weight: 500;
+line-height: 20px;
+letter-spacing: 0em;
+text-align: left;
+}
+
+.Coin-name {
+  width: 1.875rem;
+  background-color: #141317;
+  height: 5.563rem;
+  border-radius: 5px;
+  border: 1px solid #141317;
+  position: relative;
+  right: 0.1rem;
+  display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Coin-name.day-mode {
+  background-color: #F2F2F2;
+  color: #000;
+  border: 1px solid #C8C8C8;
+
+}
+
+.coins-name-text{
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  transform: rotateY(190px);
+  /* transform: skew(35deg, 123deg); */
+  transform: rotate(-91deg);
+}
+
+.Card-wrap{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-left: 1rem;
+  margin-top: 2rem;
+}
+
+.card-1-wallet{
+  width: 11.25rem;
+  height: 5.563rem;
+  background-color: #1e2227;
+  border: 1px solid #1e2227;
+  border-radius: 3px;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+}
+
+.card-1-wallet.day-mode{
+  background-color: #F2F2F2;
+  color: #000; /* Text color */
+  border: 1px solid #C8C8C8;
+  box-shadow: 0px 4px 4px 0px #00000020;
+}
+
+.Walle-Amount{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 4rem;
+  flex-wrap: wrap;
+  
+}
+
+.Confirm-btn{
+  background-color: #333378;
+  width: 17.875rem;
+  height: 2.5rem;
+  border-radius: 5px;
+  border: 1px solid #333378;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: absolute;
+  bottom: 24rem;
+  left: 10rem;
+  cursor: pointer;
+}
+
+
+.Transaction--history-heading{
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  border-bottom: 1px solid #3F56B2;
+  width: 12.3rem;
+}
+
+.detail-history{
+  background-color: #13171C;
+  border-radius: 7px;
+  border: 1px solid #13171C;
+  width: 35.438rem;
+  height: 17rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px;
+}
+.detail-history.day-mode{
+  background-color: #F2F2F2;
+  color: #000; /* Text color */
+  border: 1px solid #C8C8C8;
+  box-shadow: 0px 4px 4px 0px #00000020;
+}
+
+.Transaction-history{
+
+}
+
+
+.withdraw-wallet-mini-heading{
+  font-family: Montserrat;
+font-size: 12px;
+font-weight: 500;
+line-height: 15px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+
+.Dates{
+  font-family: Montserrat;
+font-size: 12px;
+font-weight: 500;
+line-height: 15px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+
+.Headings-wallet{
+  display: flex;
+  gap: 23rem;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 0.6rem;
+}
+
+.payment-history{
+  width: 33.375rem;
+  height: 4.063rem;
+  background-color: #141317;
+  border: 1px solid #141317;
+  border-radius: 6px;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-history.day-mode{
+  background-color: #F2F2F2;
+  color: #000; /* Text color */
+  border: 1px solid #C8C8C8;
+  box-shadow: 0px 4px 4px 0px #00000020;
+}
+
+.border-line-y{
+  width: 1px;
+  height: 2.563rem;
+  background-color: #FFFFFF;
+
+}
+
+.border-line-y.day-mode{
+  background-color: black;
+  color: #000; /* Text color */
+
+}
+
+.Amount{
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+.Amount-mini-text{
+  font-family: Montserrat;
+font-size: 10px;
+font-weight: 500;
+line-height: 0;
+letter-spacing: 0em;
+text-align: left;
+
+}
+
+.dollar-sign-money{
+  font-family: Montserrat;
+font-size: 14px;
+font-weight: 500;
+line-height: 0;
+letter-spacing: 0em;
+text-align: left;
+
+}
+
+.cash-digit{
+  color: #5FA492;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 0;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.cash-digit-negative{
+  color: #991616;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 0;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.Deposite-icon{
+  height: 2rem;
+}
+
+.Amount-input{
+  position: relative;
+  bottom: 1rem;
+  background-color: #141317;
+  border: 1px solid #141317;
+  padding-left: 12px;
+  outline: none;
+  color: white;
+}
+
+.Amount-input.day-mode {
+  background-color: #F2F2F2;
+  color: #000;
+  border: 1px solid #F2F2F2;
+
+}
+
+.Amount-heading{
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0em;
+  text-align: start;
+  margin-left: 1rem;
+  position: relative;
+  bottom: 0.7rem;
+  filter: invert(white);
+}
+
+.Amount-heading.day-mode {
+  background-color: #F2F2F2;
+  color: #000;
+
+
+  border: none;
+
+}
+
+
+.Amount-heading.day-mode {
+  background: #f2f2f2;
+  width: fit-content;
+  padding: 0 5px;
+}

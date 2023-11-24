@@ -90,9 +90,12 @@ const Login = () => {
           password,
         }
       );
-      console.log(response);
+      const data = response.data.data;
       if (response.status == 200) {
-        const data = response.data.data;
+        if (response.data.inactive) {
+          toast.error("Please verify Email!");
+          return;
+        }
         localStorage.setItem("token", JSON.stringify(data.token));
         localStorage.setItem("user", JSON.stringify(data.user));
         navigate("dashboard");
@@ -193,7 +196,7 @@ const Login = () => {
 
             <div className="rember-forget">
               <p className="Rmber-check" onClick={handleRememberPassword}>
-                <input type="checkbox" name="" id=""  />
+                <input type="checkbox" name="" id="" />
                 {t("Remberer_Password")}
               </p>
 

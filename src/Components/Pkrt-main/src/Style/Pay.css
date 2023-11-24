@@ -1,0 +1,278 @@
+.Payement-text{
+    font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 8px;
+    letter-spacing: 0em;
+    /* text-align: left; */
+    
+}
+
+.New-payement{
+display: flex;
+flex-direction: column;
+
+align-items: center;
+justify-content: center;
+background-color: #1E2227;
+border: 1px solid  #1E2227;
+border-radius: 4px;
+width: 3.688rem;
+height: 4rem;
+}
+
+.New-payement.day-mode{
+    background-color: #F2F2F2;
+    color: #000; /* Text color */
+    border: 1px solid #C8C8C8;
+    box-shadow: 0px 4px 4px 0px #00000020;
+  }
+
+.border-line-x{
+width:2.938rem;
+background-color: #3F56B2;
+}
+
+.Pay-wrap{
+    display: flex;
+    gap: 10rem;
+    position: relative;
+    bottom: 6rem;
+
+}
+
+.chain-text{
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    -webkit-text-decoration: underline #3F56B2;
+    text-decoration: underline #3F56B2;
+ 
+}
+
+.Coin-selector{
+    width: 14.25rem;
+    height: 8.688rem;
+    
+    background: linear-gradient(180deg, rgba(151, 119, 23, 0.64) 0%, #BD8F2E 100%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    flex-direction: column;
+    margin-top: 2rem;
+    position: relative;
+    bottom: 6rem;
+}
+
+.pay-inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.wallet-address-wrap{
+    display: flex;
+}
+
+.Amount-wrap{
+    display: flex;
+}
+
+.Pay-cards-conversion{
+    display: flex;
+    gap: 1rem;
+}
+
+.conversion-1{
+    background-color: #141317;
+    border: 1px solid #141317;
+    border-radius: 5px;
+    width: 5rem;
+    height: 2.5rem;
+}
+
+.conversion-1.day-mode{
+    background-color: #F2F2F2;
+    color: #000; /* Text color */
+    border: 1px solid #C8C8C8;
+    box-shadow: 0px 4px 4px 0px #00000020;
+  }
+  
+
+.conversion-balnce{
+    font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 500;
+ 
+    letter-spacing: 0em;
+  
+    position: relative;
+    bottom: 1.5rem;
+}
+
+
+
+.Conversion-pic{
+    width: 2.5rem;
+    height: 1.5rem;
+    position: relative;
+    bottom: 1rem;
+}
+
+.Conversion-Heading{
+    font-family: Montserrat;
+font-size: 20px;
+font-weight: 500;
+line-height: 24px;
+letter-spacing: 0em;
+text-align: left;
+border-bottom: 1px solid #3F56B2 ;
+position: relative;
+    right: 5rem;
+}
+
+
+.Gerante-qr-btn{
+    background-color: #333378;
+    width: 17.875rem;
+    height: 2.5rem;
+    border-radius: 5px;
+    border: 1px solid #333378;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  cursor: pointer;
+    position: relative;
+    top: 3rem;
+    cursor: pointer;
+}
+
+.Qr-code-scan-text{
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    width: 37rem;
+}
+
+.qr-code-img{
+    height: 15rem;
+    width: 17rem;
+    margin-left: 9rem;
+}
+
+
+.Buttn{
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.verify-btn{
+    background-color: #333378;
+    width: 15.25rem;
+    height: 2.5rem;
+    border-radius: 5px;
+    border: 1px solid #333378;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    /* position: absolute; */
+    bottom: 24rem;
+    left: 10rem;
+    cursor: pointer;
+}
+
+
+.check-transaction-btn{
+    background-color: #333378;
+    width: 15.25rem;
+    height: 2.5rem;
+    border-radius: 5px;
+    border: 1px solid #333378;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    /* position: absolute; */
+    bottom: 24rem;
+    left: 10rem;
+    cursor: pointer;
+}
+
+
+.Invoice{
+    display: flex;
+    flex-direction: column;
+    /* gap: 0.1rem; */
+    align-items: center;
+    justify-content: end;
+    
+    background-color: #1E2227;
+    border: 1px solid #1E2227;
+    border-radius: 4px;
+    width: 3.688rem;
+    height: 4rem;
+    position: relative;
+    left: 31rem;
+    top: 1rem;
+}
+
+.Invoice.day-mode {
+    background-color: #F2F2F2;
+    color: #000;
+    border: 1px solid #C8C8C8;
+    box-shadow: 0px 4px 4px 0px #00000020;
+}
+
+
+.Date-pick{
+    background-color: #141317;
+    background-color: #141317;
+    position: relative;
+    bottom: 1.5rem;
+    width: 15rem;
+    height: 1.8rem;
+    border:  1px solid #141317 ;
+    color: white;
+}
+
+.Date-pick.day-mode {
+    background-color: #F2F2F2;
+    color: #000; /* Text color */
+    border: none;
+    outline: none;
+ 
+  }
+
+
+.Date-heading {
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: start;
+    margin-left: 1rem;
+    position: relative;
+    bottom: 0rem;
+    z-index: 1;
+}
+
+.Date-heading.day-mode {
+    background-color: #F2F2F2;
+    color: #000;
+    border: none;
+    width: 2rem;
+
+ 
+  }
